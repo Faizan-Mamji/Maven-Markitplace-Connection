@@ -1,9 +1,7 @@
 package POMMarkITplacePages;
 
 import static org.testng.Assert.assertEquals;
-
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -35,12 +33,12 @@ public class POMTrackPage {
 			logg.info("Track TestCase Starts Here");
 			driver.findElement(TrackNavClick).click();
 			TimeUnit.SECONDS.sleep(10);
-			logg.info("Track Dashboard page opens successfully");
+			logg.info("Track Dashboard opens successfully");
 			assertEquals(driver.getTitle(), TrackPageTitle);
 			logg.info("Track Dashboard Assertion verified");
 			driver.findElement(BtnBuyItemsAgain).click();
 			TimeUnit.SECONDS.sleep(30);
-			logg.info("Buy items buttons click successfully");
+			logg.info("Buy items button click successfully");
 			driver.findElement(CloseBtnAddToCart).click();
 			logg.info("Add To Cart Modal Close successfully");
 			TimeUnit.SECONDS.sleep(5);

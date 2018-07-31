@@ -33,7 +33,7 @@ public class POMCalendarsPage {
 		try {
 			logg.info("Calendars Page testcase starts here");
 			driver.findElement(CalendarNavClick).click();
-			logg.info("Calendars Page Opens successfully");
+			logg.info("Calendars Page Open successfully");
 			TimeUnit.SECONDS.sleep(4);
 			assertEquals(driver.getTitle(), CalendarPageTitle);
 			logg.info("Calendars Page Assertion verified");
