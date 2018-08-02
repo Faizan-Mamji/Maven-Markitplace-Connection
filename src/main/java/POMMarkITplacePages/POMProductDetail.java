@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMProductDetail {
 	
@@ -34,6 +36,7 @@ public class POMProductDetail {
 	
 	public void Navigate_PDP_Page_From_SearchListing() throws InterruptedException 
 	{
+		SoftAssert sf =new SoftAssert();
 		//PropertyConfigurator.configure("log4j.properties");
 		try
 		{
@@ -42,7 +45,7 @@ public class POMProductDetail {
 			driver.findElement(productimageclick).click();
 			TimeUnit.MILLISECONDS.sleep(12000);
 			logg.info("Click on product and navigate to PDP");
-			assertEquals(PDPTitle, driver.getTitle());
+			sf.assertEquals(PDPTitle, driver.getTitle());
 			TimeUnit.MILLISECONDS.sleep(2000);
 			logg.info("PDP Assertion verified here");
 			logg.info("*********************** PDP TestCase Passed ***********************");
@@ -77,7 +80,7 @@ public class POMProductDetail {
 		catch (Exception ex)
 		{
 			logg.info("POMProductDetail - Exception!!! - Must have navigation issue to PDP page "+ex.getMessage());
-			
+			Assert.fail("Failed in class - POMProductDetail");
 		}
 	}
 }

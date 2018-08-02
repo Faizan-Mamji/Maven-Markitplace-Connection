@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMOrdersPage {
 
@@ -31,11 +33,12 @@ public class POMOrdersPage {
 	By OrdersTimePeriod = By.xpath("//select[@title='Select Time Period']");
 
 	public void OrdersPage_Functionality() {
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Orders testcase starts here");
 			driver.findElement(OrdersNavClick).click();
 			TimeUnit.SECONDS.sleep(10);
-			assertEquals(OrderPageTitle, driver.getTitle());
+			sf.assertEquals(OrderPageTitle, driver.getTitle());
 			logg.info("Orders Page assertion verified Successfully");
 			logg.info("Orders Page opened Successfully");
 			logg.info("Click On Buy items again button");
@@ -79,6 +82,8 @@ public class POMOrdersPage {
 			logg.info(
 					"POMOrdersPage - Exception!!! - Must have issue on Orders page while doing add to cart or click to loadmore button - OrdersPage_Functionality "
 							+ ex.getMessage());
+			
+			Assert.fail("Failed in class - POMOrdersPage");
 		}
 	}
 }

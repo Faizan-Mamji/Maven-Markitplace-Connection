@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMQuotesPage {
 
@@ -32,11 +34,12 @@ public class POMQuotesPage {
 	By QuotesTimePeriod = By.xpath("//select[@title='Select Time Period']");
 
 	public void QuotesPage_Functionality() {
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Quotes testcase starts here");
 			driver.findElement(QuotesNavClick).click();
 			TimeUnit.SECONDS.sleep(10);
-			assertEquals(QuotesPageTitle, driver.getTitle());
+			sf.assertEquals(QuotesPageTitle, driver.getTitle());
 			logg.info("Quotes Page assertion verified Successfully");
 			logg.info("Quotes Page opened Successfully");
 			Select DrpOrdersTimePeriod = new Select(driver.findElement(QuotesTimePeriod));
@@ -72,6 +75,8 @@ public class POMQuotesPage {
 			logg.info(
 					"POMQuotesPage - Exception!!! - Must have issue on Quotes page while click to loadmore button - QuotesPage_Functionality "
 							+ ex.getMessage());
+			
+			Assert.fail("Failed in class - POMQuotesPage");
 		}
 	}
 }

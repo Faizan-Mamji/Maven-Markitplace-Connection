@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMReportsPage {
 
@@ -35,13 +37,14 @@ public class POMReportsPage {
 	public void AssetPage_Functionality() {
 		
 		Actions Ac = new Actions(driver);
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Reports testcase starts here");
 			Ac.moveToElement(driver.findElement(ReportsNav)).perform();
 			logg.info("Reports hover opens successfully");
 			driver.findElement(AssetsNavLink).click();
 			//TimeUnit.SECONDS.sleep(6);
-			assertEquals(AssetPageTitle, driver.getTitle());
+			sf.assertEquals(AssetPageTitle, driver.getTitle());
 			logg.info("Assets Report Assertion Verified successfully");
 			logg.info("Assets Report page opens successfully");
 			WebElement ColumnFrom = driver.findElement(By.xpath("(//label[@class='drag-handle sort-arrow none'])[2]"));
@@ -67,6 +70,7 @@ public class POMReportsPage {
 			logg.info(
 					"POMReportsPage - Exception!!! - Must have issue on Assets Report page while email or opens the page - AssetPage_Functionality "
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMReportsPage");
 		}
 	}
 }

@@ -1,14 +1,13 @@
 package POMMarkITplacePages;
 
-import static org.testng.Assert.assertEquals;
-
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMCalendarsPage {
 
@@ -30,12 +29,13 @@ public class POMCalendarsPage {
 	By CalendarNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[1]");
 
 	public void CalendarPage_Function() {
+		SoftAssert sf= new SoftAssert();
 		try {
 			logg.info("Calendars Page testcase starts here");
 			driver.findElement(CalendarNavClick).click();
 			logg.info("Calendars Page Open successfully");
 			TimeUnit.SECONDS.sleep(4);
-			assertEquals(driver.getTitle(), CalendarPageTitle);
+			sf.assertEquals(driver.getTitle(), CalendarPageTitle);
 			logg.info("Calendars Page Assertion verified");
 			Select calyear = new Select(driver.findElement(By.xpath("//select[@id='calendarSelectYearMonthly']")));
 			calyear.selectByIndex(5);
@@ -50,6 +50,7 @@ public class POMCalendarsPage {
 		catch (Exception ex) {
 			logg.info("POMCalendarsPage - Exception!!! - Must have issue on calendars page  - CalendarPage_Function  "
 					+ ex.getMessage());
+			Assert.fail("Failed in class - POMCalendarsPage");
 		}
 	}
 }

@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMFooter {
 
@@ -51,6 +53,7 @@ public class POMFooter {
 	By FooterHelp = By.xpath("(//div[@class='footer-top-right clearfix']//a)[19]");
 
 	public void Navigate_Footer() {
+		SoftAssert sf =new SoftAssert();
 		Actions Ac = new Actions(driver);
 		try {
 			logg.info("Footer Testcase starts here");
@@ -63,7 +66,7 @@ public class POMFooter {
 			driver.findElement(MyProfile).click();
 			TimeUnit.SECONDS.sleep(6);
 			logg.info("My Profile Page Opens Successfully");
-			assertEquals(driver.getTitle(),ProfilePageTitle );
+			sf.assertEquals(driver.getTitle(),ProfilePageTitle );
 			logg.info("My Profile Assertion Verified Successfully");
 			
 			Ac.moveToElement(driver.findElement(HoverTopMyAccount)).perform();
@@ -72,55 +75,55 @@ public class POMFooter {
 			driver.findElement(ShippingAddress).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Shipping Address Page Opens Successfully");
-			assertEquals(driver.getTitle(), ShippingPageTitle);
+			sf.assertEquals(driver.getTitle(), ShippingPageTitle);
 			logg.info("Shipping Assertion Verified Successfully");
 			
 			driver.findElement(FooterAllproducts).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("All Products Page Opens Successfully");
-			assertEquals(driver.getTitle(), AllProductsPageTitle);
+			sf.assertEquals(driver.getTitle(), AllProductsPageTitle);
 			logg.info("All Products Assertion Verified Successfully");
 
 			driver.findElement(FooterResources).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Resource Page Opens Successfully");
-			assertEquals(driver.getTitle(), ResourcePageTitle);
+			sf.assertEquals(driver.getTitle(), ResourcePageTitle);
 			logg.info("Resource Assertion Verified Successfully");
 
 			driver.findElement(FooterSpecialOffers).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("SpecialOffers Page Opens Successfully");
-			assertEquals(driver.getTitle(), SpecialOfferPageTitle);
+			sf.assertEquals(driver.getTitle(), SpecialOfferPageTitle);
 			logg.info("Special Offers Assertion Verified Successfully");
 
 			driver.findElement(FooterAboutUs).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("AboutUs Page Opens Successfully");
-			assertEquals(driver.getTitle(), AboutUsPageTitle);
+			sf.assertEquals(driver.getTitle(), AboutUsPageTitle);
 			logg.info("AboutUs Assertion Verified Successfully");
 
 			driver.findElement(FooterContactUs).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("ContactUs Page Opens Successfully");
-			assertEquals(driver.getTitle(), ContactUsPageTitle);
+			sf.assertEquals(driver.getTitle(), ContactUsPageTitle);
 			logg.info("ContactUs Assertion Verified Successfully");
 
 			driver.findElement(FooterCustomerSupport).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Customer Support Page Opens Successfully");
-			assertEquals(driver.getTitle(), CustomerSupportPageTitle);
+			sf.assertEquals(driver.getTitle(), CustomerSupportPageTitle);
 			logg.info("Customer Support Assertion Verified Successfully");
 
 			driver.findElement(FooterTermsOfSale).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Terms Of Sale Page Opens Successfully");
-			assertEquals(driver.getTitle(), TermsOfSalePageTitle);
+			sf.assertEquals(driver.getTitle(), TermsOfSalePageTitle);
 			logg.info("Terms Of Sale Assertion Verified Successfully");
 
 			driver.findElement(FooterPrivacyPolicy).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Privacy Policy Page Opens Successfully");
-			assertEquals(driver.getTitle(), PrivacyPolicyPageTitle);
+			sf.assertEquals(driver.getTitle(), PrivacyPolicyPageTitle);
 			logg.info("Privacy Policy Assertion Verified Successfully");
 
 			driver.findElement(FooterAccessibility).click();
@@ -136,7 +139,7 @@ public class POMFooter {
 					logg.info("Condition passed as child id is different from parent");
 					driver.switchTo().window(Child);
 					logg.info("Navigate to Child window again");
-					assertEquals(driver.getTitle(), AccessibilityPageTitle);
+					sf.assertEquals(driver.getTitle(), AccessibilityPageTitle);
 					logg.info("Accessibility assertion verified successfully");
 					driver.switchTo().window(Parent_Window);
 					logg.info("Navigate to parent window again");
@@ -146,7 +149,7 @@ public class POMFooter {
 			driver.findElement(FooterHelp).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Help Page Opens Successfully");
-			assertEquals(driver.getTitle(), HelpPageTitle);
+			sf.assertEquals(driver.getTitle(), HelpPageTitle);
 			logg.info("Help assertion verified successfully");
 			logg.info("*********************** Footer TestCase Passed ***********************");
 		}
@@ -155,6 +158,7 @@ public class POMFooter {
 			logg.info(
 					"POMFooter - Exception!!! - There is some issue while navigating to footers Pages or may be a driver issue "
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMFooter");
 		}
 	}
 

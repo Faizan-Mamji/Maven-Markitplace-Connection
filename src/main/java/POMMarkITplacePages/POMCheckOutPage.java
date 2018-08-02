@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMCheckOutPage {
 
@@ -60,6 +62,7 @@ public class POMCheckOutPage {
 	By ClickLogoImage = By.xpath("//img[@class='logo']");
 
 	public void CompleteCheckout_Process() throws InterruptedException {
+		SoftAssert sf =new SoftAssert();
 		try {
 			// Step 1 of Checkout process
 			logg.info("CheckOut TestCase Starts Here");
@@ -119,7 +122,7 @@ public class POMCheckOutPage {
 
 			String TitleVerification = driver.getTitle();
 			if (TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
-				assertEquals(TitleVerification, OrderConfirmationTitle);
+				sf.assertEquals(TitleVerification, OrderConfirmationTitle);
 				logg.info("Order Confirmation Page assertion verified successfully!");
 				logg.info("Order Confirmation Page Opens successfully!");
 				logg.info("*********************** Checkout TestCase Passed ***********************");
@@ -144,6 +147,8 @@ public class POMCheckOutPage {
 			logg.info(
 					"POMCheckOutPage - Exception!!! - There is some issue while doing checkout or may be it shouldn't navigate to order confirmation page "
 							+ ex.getMessage());
+			
+			Assert.fail("Failed in class - POMCheckOutPage");
 		}
 	}
 

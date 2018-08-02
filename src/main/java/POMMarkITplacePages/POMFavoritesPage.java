@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMFavoritesPage {
 
@@ -38,12 +40,13 @@ public class POMFavoritesPage {
 
 	public void Favorites_Page_TestFunctionality() throws InterruptedException {
 		// PropertyConfigurator.configure("log4j.properties");
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Favorites TestCase Starts Here");
 			driver.findElement(FavoritesLinkText).click();
 			TimeUnit.MILLISECONDS.sleep(15000);
 			logg.info("Favorites page opens successfully");
-			assertEquals(FavoritesPageTitle, driver.getTitle());
+			sf.assertEquals(FavoritesPageTitle, driver.getTitle());
 			logg.info("Favorites assertion passed successfully");
 			driver.findElement(SelectAllCheckbox).click();
 			TimeUnit.MILLISECONDS.sleep(4000);
@@ -56,7 +59,7 @@ public class POMFavoritesPage {
 			logg.info("Add to cart modal close successfully");
 			driver.findElement(ShopNavClick).click();
 			logg.info("Shop Page Opens Successfully");
-			assertEquals(driver.getTitle(), ShopPageTitle);
+			sf.assertEquals(driver.getTitle(), ShopPageTitle);
 			logg.info("Shop Page assertion passed successfully");
 			logg.info("*********************** Favorites TestCase Passed ***********************");
 		}
@@ -67,6 +70,8 @@ public class POMFavoritesPage {
 			logg.info(
 					"POMFavoritesPage - Exception!!! - There must be some issue on favorites page while doing add to cart"
 							+ ex.getMessage());
+			
+			Assert.fail("Failed in class - POMFavoritesPage");
 		}
 	}
 }

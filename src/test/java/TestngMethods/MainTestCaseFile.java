@@ -9,7 +9,6 @@ import POMMarkITplacePages.POMFavoritesPage;
 import POMMarkITplacePages.POMFooter;
 import POMMarkITplacePages.POMLoginPage;
 import POMMarkITplacePages.POMOrdersPage;
-
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import POMMarkITplacePages.POMProductDetail;
@@ -23,12 +22,14 @@ import POMMarkITplacePages.POMStandardListing;
 import POMMarkITplacePages.POMTrackPage;
 import POMMarkITplacePages.POMTrackSearchResultPage;
 import POMMarkITplacePages.TestExecutionEmail;
-
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class MainTestCaseFile extends MainDriverClass {
 
@@ -42,11 +43,11 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "arpatech_bus034@connection.com";
-	String Login_Password = "7QMGcA9u";
+	String Login_UserName = "gcarrasco@netflix.com";
+	String Login_Password = "Arp@tech1";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
-	@BeforeTest
+	@BeforeSuite
 	public void beforeTest() throws IOException {
 		maindriver = genericDriver();
 	}
@@ -64,7 +65,7 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 
 	}
-
+	
 	@Test(priority = 1)
 	public void TestCase2_SearchListingPage() {
 
@@ -79,7 +80,7 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 2)
+		@Test(priority = 2)
 	public void TestCase3_PDPTestCase() {
 
 		try {
@@ -93,7 +94,7 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-
+		
 	@Test(priority = 3)
 	public void TestCase4_FavoritesAddSelectedToCart() {
 
@@ -266,7 +267,7 @@ public class MainTestCaseFile extends MainDriverClass {
 	public void TestCase16_AssetsReport() {
 
 		try {
-			POMReportsPage ObjReports = new POMReportsPage(maindriver);
+			POMReportsPage	 ObjReports = new POMReportsPage(maindriver);
 			ObjReports.AssetPage_Functionality();
 		}
 
@@ -290,7 +291,7 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 	
-/*	@Test(priority = 17)
+	@Test(priority = 17)
 	public void TestCase18_EmailFunction() {
 
 		try {
@@ -302,13 +303,14 @@ public class MainTestCaseFile extends MainDriverClass {
 			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase17_FooterPageOpens() "
 					+ ex.getMessage());
 		}
-	}*/
+	}
 	
 
-	@AfterTest
-	public void afterTest() {
+	@AfterSuite
+	public void afterTest() throws Exception {
 		TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
 		maindriver.quit();
+		TimeUnit.SECONDS.sleep(30);
 		ObjEmail.EmailFunction();
 	}
 

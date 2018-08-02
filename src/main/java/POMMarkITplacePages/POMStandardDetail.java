@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMStandardDetail {
 
@@ -28,6 +30,7 @@ public class POMStandardDetail {
 	By StandardViewAllLinkClick = By.xpath("(//a[contains(text(),'View all')])[1]");
 
 	public void Navigate_SDP_From_StandardListing() {
+
 		// PropertyConfigurator.configure("log4j.properties");
 		try {
 			logg.info("Standard Detail TestCase Starts here");
@@ -53,6 +56,8 @@ public class POMStandardDetail {
 			logg.info(
 					"POMStandardDetail - Exception!!! - There must be some issue on standard detail page while loading the page"
 							+ ex.getMessage());
+			
+			Assert.fail("Failed in class - POMStandardDetail");
 		}
 	}
 }

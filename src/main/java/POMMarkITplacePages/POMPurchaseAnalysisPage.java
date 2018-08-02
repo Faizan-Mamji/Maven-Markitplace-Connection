@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMPurchaseAnalysisPage {
 
@@ -28,11 +30,12 @@ public class POMPurchaseAnalysisPage {
 	By EmailSendBtn = By.xpath("//button[@class='btn btn-primary']");
 
 	public void OpenPurchase_Analysis_Email() {
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Purchase Analysis testcase starts here");
 			driver.findElement(purchasenavclick).click();
 			TimeUnit.SECONDS.sleep(4);
-			assertEquals(PurchasePageTitle, driver.getTitle());
+			sf.assertEquals(PurchasePageTitle, driver.getTitle());
 			logg.info("Purchase Analysis page Assertion Verified successfully");
 			logg.info("Purchase Analysis page opens successfully");
 			TimeUnit.SECONDS.sleep(2);
@@ -52,6 +55,7 @@ public class POMPurchaseAnalysisPage {
 			logg.info(
 					"POMPurchaseAnalysisPage - Exception!!! - Must have issue on purchase analysis page while email or opens the page - OpenPurchase_Analysis_Email "
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMPurchaseAnalysisPage");
 		}
 	}
 }

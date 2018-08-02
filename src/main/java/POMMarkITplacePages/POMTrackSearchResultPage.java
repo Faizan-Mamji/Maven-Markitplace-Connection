@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMTrackSearchResultPage {
 
@@ -35,8 +37,9 @@ public class POMTrackSearchResultPage {
 	By CheckTotalCount = By.xpath("//div[@class='search-matching-container']//p");
 
 	public void TrackSearchResultPage_Function() {
+		SoftAssert sf =new SoftAssert();
 		try {
-			assertEquals(driver.getTitle(), TrackSearchResultPageTitle);
+			sf.assertEquals(driver.getTitle(), TrackSearchResultPageTitle);
 			logg.info("Track Search Result Assertion verified");
 			TimeUnit.SECONDS.sleep(2);
 			String OrdersCheckCountText = driver.findElement(CheckTotalCount).getText();
@@ -120,6 +123,7 @@ public class POMTrackSearchResultPage {
 			logg.info(
 					"POMTrackSearchSearchPage - Exception!!! - There is some issue on Track Search Result Page while click on load more button or may be driver issue "
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMTrackSearchResultPage");
 		}
 	}
 }

@@ -9,6 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMSearchListing {
 
@@ -50,6 +52,7 @@ public class POMSearchListing {
 	By CheckCartText = By.xpath("//div[@class='cart-header lower-shadow-medium-down fivelayer  ']//h2");
 
 	public void OpenSearchPage_AddToCart_And_Verifyproducts_On_FavoritesPage() throws InterruptedException {
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("SearchListing TestCase Starts");
 			driver.findElement(SearchBox).sendKeys("printers");
@@ -58,7 +61,7 @@ public class POMSearchListing {
 			driver.findElement(SearchBox).sendKeys(Keys.ENTER);
 			TimeUnit.MILLISECONDS.sleep(18000);
 			logg.info("Printers Search ListingPage Opens");
-			assertEquals(SearchPageTitle, driver.getTitle());
+			sf.assertEquals(SearchPageTitle, driver.getTitle());
 			logg.info("Assertion Passed For SearchListing Page");
 			String SearchlistingUrl = driver.getCurrentUrl();
 			TimeUnit.MILLISECONDS.sleep(2000);
@@ -82,7 +85,7 @@ public class POMSearchListing {
 					driver.navigate().to(SearchlistingUrl);
 					TimeUnit.MILLISECONDS.sleep(18000);
 					logg.info("Products Listing Page Opens");
-					assertEquals(SearchPageTitle, driver.getTitle());
+					sf.assertEquals(SearchPageTitle, driver.getTitle());
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
 					logg.info("Click on Add To Cart Button");
@@ -113,7 +116,7 @@ public class POMSearchListing {
 					driver.navigate().to(SearchlistingUrl);
 					TimeUnit.MILLISECONDS.sleep(18000);
 					logg.info("Products Listing Page Opens");
-					assertEquals(SearchPageTitle, driver.getTitle());
+					sf.assertEquals(SearchPageTitle, driver.getTitle());
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
 					logg.info("Click on Add To Cart Button");
@@ -139,7 +142,7 @@ public class POMSearchListing {
 				driver.findElement(FavoritesLinkText).click();
 				TimeUnit.MILLISECONDS.sleep(18000);
 				logg.info("Favorites Page Opens Successfully");
-				assertEquals(FavoritesPageTitle, driver.getTitle());
+				sf.assertEquals(FavoritesPageTitle, driver.getTitle());
 				logg.info("Favorites Page Validation Passed");
 				driver.findElement(FavoritesCheckBoxSelectAll).click();
 				TimeUnit.MILLISECONDS.sleep(2000);
@@ -166,7 +169,7 @@ public class POMSearchListing {
 					driver.navigate().to(SearchlistingUrl);
 					TimeUnit.MILLISECONDS.sleep(18000);
 					logg.info("Products Listing Page Opens");
-					assertEquals(SearchPageTitle, driver.getTitle());
+					sf.assertEquals(SearchPageTitle, driver.getTitle());
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
 					driver.findElement(AddToCartBtn).click();
@@ -197,7 +200,7 @@ public class POMSearchListing {
 					driver.navigate().to(SearchlistingUrl);
 					TimeUnit.MILLISECONDS.sleep(18000);
 					logg.info("Products Listing Page Opens");
-					assertEquals(SearchPageTitle, driver.getTitle());
+					sf.assertEquals(SearchPageTitle, driver.getTitle());
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
 					driver.findElement(AddToCartBtn).click();
@@ -218,6 +221,8 @@ public class POMSearchListing {
 			logg.info(
 					"POMSearchListing - Exception!!! - There is some issue on search listing page while loading, add to cart or add to favorite the product and can be found on page: POMSearchListing - "
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMSearchListing");
+			
 		}
 	}
 }

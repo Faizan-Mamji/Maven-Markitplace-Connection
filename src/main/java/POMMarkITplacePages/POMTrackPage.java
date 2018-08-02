@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMTrackPage {
 
@@ -29,12 +31,13 @@ public class POMTrackPage {
 	By CloseBtnAddToCart = By.xpath("(//button[@title='Close (Esc)'])[1]");
 
 	public void TrackPageFunction_BuyItemsAgain() {
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Track TestCase Starts Here");
 			driver.findElement(TrackNavClick).click();
 			TimeUnit.SECONDS.sleep(10);
 			logg.info("Track Dashboard opens successfully");
-			assertEquals(driver.getTitle(), TrackPageTitle);
+			sf.assertEquals(driver.getTitle(), TrackPageTitle);
 			logg.info("Track Dashboard Assertion verified");
 			driver.findElement(BtnBuyItemsAgain).click();
 			TimeUnit.SECONDS.sleep(30);
@@ -53,13 +56,14 @@ public class POMTrackPage {
 	}
 
 	public void TrackPageFunction_QuickSearch() {
+		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("QuickSearch Function Starts Here");
 			driver.findElement(QuickFinderSearch).sendKeys("11");
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(QuickFinderSearch).sendKeys(Keys.ENTER);
 			TimeUnit.SECONDS.sleep(50);
-			assertEquals(driver.getTitle(), TrackSearchResultPageTitle);
+			sf.assertEquals(driver.getTitle(), TrackSearchResultPageTitle);
 			logg.info("Track Search Result Page Assertion verified");
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("*********************** Track Page TestCase Passed ***********************");
@@ -69,6 +73,7 @@ public class POMTrackPage {
 			logg.info(
 					"POMTrackPage - Exception!!! - Must have issue on track page while doing Buy Items Again - TrackPageFunction_QuickSearch  "
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMTrackPage");
 		}
 	}
 }

@@ -4,6 +4,7 @@ import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.MultiPartEmail;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class TestExecutionEmail {
 
@@ -38,7 +39,7 @@ public class TestExecutionEmail {
 			email.addCc("faizanmamji1@gmail.com");
 			email.setSubject("Report Logs");
 			email.setMsg("Please find attached logs!");
-			email.addTo("kinza.ansari@arpatech.com", "Kinza Ansari");
+			email.addTo(MyEmail, "Faizan Mamji");
 
 			// add the attachment
 			email.attach(attachment);
@@ -50,6 +51,7 @@ public class TestExecutionEmail {
 		catch (Exception ex) {
 
 			ex.getMessage();
+			Assert.fail("Email failed to send");
 		}
 	}
 

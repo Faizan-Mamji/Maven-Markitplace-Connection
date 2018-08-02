@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class POMStandardListing {
 
@@ -86,6 +87,7 @@ public class POMStandardListing {
 			logg.info(
 					"POMStandardListing - Exception!!! - There must be some issue on standard listing page while doing add to cart or opens the page"
 							+ ex.getMessage());
+			Assert.fail("Failed in class - POMStandardListing");
 		}
 	}
 }

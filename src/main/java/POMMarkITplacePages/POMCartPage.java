@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class POMCartPage {
 
@@ -30,12 +32,13 @@ public class POMCartPage {
 	By ProceedCheckout = By.xpath("//div[@class='sticky-rightbox-fixed']//a");
 
 	public void Navigate_Cart_Page_Check_Functionality() {
+		SoftAssert sf= new SoftAssert();
 		try {
 			logg.info("CartPage TestCase Starts Here");
 			driver.findElement(CartIcon).click();
 			TimeUnit.MILLISECONDS.sleep(15000);
 			logg.info("CartPage Opens Successfully");
-			assertEquals(driver.getTitle(),CartPageTitle);
+			sf.assertEquals(driver.getTitle(),CartPageTitle);
 			logg.info("CartPage Assertion Verified");
 			driver.findElement(CartPageQtyBox).clear();
 			TimeUnit.MILLISECONDS.sleep(2000);
@@ -50,7 +53,7 @@ public class POMCartPage {
 			driver.findElement(ProceedCheckout).click();
 			logg.info("Proceed To Checkout button click successfully");
 			TimeUnit.MILLISECONDS.sleep(10000);
-			assertEquals(driver.getTitle(), CheckoutPageTitle);
+			sf.assertEquals(driver.getTitle(), CheckoutPageTitle);
 			logg.info("Assertion passed of checkout page title");
 			logg.info("*********************** Cart Page TestCase Passed ***********************");
 		}
@@ -59,6 +62,8 @@ public class POMCartPage {
 			logg.info(
 					"POMCartPage - Exception!!! - There is some issue while update the qty of the product or may be a driver issue "
 							+ ex.getMessage());
+			
+			Assert.fail("Failed in class - POMCartPage");
 		}
 	}
 
