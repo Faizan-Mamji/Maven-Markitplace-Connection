@@ -32,7 +32,7 @@ public class TestExecutionEmail {
 			// Create the email message
 			MultiPartEmail email = new MultiPartEmail();
 			email.setHostName("smtp.gmail.com");
-			email.setSmtpPort(587);
+			email.setSmtpPort(465);
 			email.setAuthenticator(new DefaultAuthenticator(MyEmail, MyPassword));
 			email.setSSLOnConnect(true);
 			email.setFrom(MyEmail, "Faizan Mamji");
