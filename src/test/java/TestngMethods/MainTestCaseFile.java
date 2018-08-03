@@ -24,9 +24,7 @@ import POMMarkITplacePages.POMTrackSearchResultPage;
 import POMMarkITplacePages.TestExecutionEmail;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -43,11 +41,11 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "gcarrasco@netflix.com";
-	String Login_Password = "Arp@tech1";
+	String Login_UserName = "arpatech1@connection.com";
+	String Login_Password = "Arp@tech5";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
-	@BeforeSuite
+	@BeforeTest
 	public void beforeTest() throws IOException {
 		maindriver = genericDriver();
 	}
@@ -291,27 +289,12 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 	
-	@Test(priority = 17)
-	public void TestCase18_EmailFunction() {
 
-		try {
-			TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
-			ObjEmail.EmailFunction();
-		}
-
-		catch (Exception ex) {
-			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase17_FooterPageOpens() "
-					+ ex.getMessage());
-		}
-	}
-	
-
-	@AfterSuite
+	@AfterTest
 	public void afterTest() throws Exception {
 		TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
 		maindriver.quit();
 		TimeUnit.SECONDS.sleep(30);
 		ObjEmail.EmailFunction();
 	}
-
 }
