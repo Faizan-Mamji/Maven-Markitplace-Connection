@@ -158,7 +158,7 @@ public class POMFooter {
 			logg.info(
 					"POMFooter - Exception!!! - There is some issue while navigating to footers Pages or may be a driver issue "
 							+ ex.getMessage());
-			Assert.fail("Failed in class - POMFooter");
+			Assert.fail("Failed Testcase in class - POMFooter");
 		}
 	}
 
