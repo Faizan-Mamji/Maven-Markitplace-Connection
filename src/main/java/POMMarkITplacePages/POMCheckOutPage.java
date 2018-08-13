@@ -69,9 +69,9 @@ public class POMCheckOutPage {
 			driver.findElement(POTextBox).sendKeys(String.valueOf(PO));
 			TimeUnit.MILLISECONDS.sleep(1000);
 			logg.info("PO number enters successfully");
-			driver.findElement(ReferenceTextBox).sendKeys("Test");
-			TimeUnit.MILLISECONDS.sleep(1000);
-			logg.info("Reference text enters successfully");
+			//driver.findElement(ReferenceTextBox).sendKeys("Test");
+			//TimeUnit.MILLISECONDS.sleep(1000);
+			//logg.info("Reference text enters successfully");
 			driver.findElement(ProjectTextBox).sendKeys("Test");
 			TimeUnit.MILLISECONDS.sleep(1000);
 			logg.info("Project text enters successfully");
