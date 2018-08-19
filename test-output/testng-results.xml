@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="2" ignored="0" total="17" passed="15">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1245026" started-at="2018-08-19T10:20:17Z" finished-at="2018-08-19T10:41:02Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1245026" started-at="2018-08-19T10:20:17Z" finished-at="2018-08-19T10:41:02Z">
+      <class name="TestngMethods.MainTestCaseFile">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="beforeTest" is-config="true" duration-ms="15410" started-at="2018-08-19T10:20:17Z" finished-at="2018-08-19T10:20:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="TestCase1_LoginPage()[pri:0, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase1_LoginPage" duration-ms="45230" started-at="2018-08-19T10:20:33Z" finished-at="2018-08-19T10:21:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase1_LoginPage -->
+        <test-method status="PASS" signature="TestCase2_SearchListingPage()[pri:1, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase2_SearchListingPage" duration-ms="184356" started-at="2018-08-19T10:21:18Z" finished-at="2018-08-19T10:24:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase2_SearchListingPage -->
+        <test-method status="PASS" signature="TestCase3_PDPTestCase()[pri:2, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase3_PDPTestCase" duration-ms="85008" started-at="2018-08-19T10:24:22Z" finished-at="2018-08-19T10:25:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase3_PDPTestCase -->
+        <test-method status="PASS" signature="TestCase4_FavoritesAddSelectedToCart()[pri:3, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase4_FavoritesAddSelectedToCart" duration-ms="48179" started-at="2018-08-19T10:25:47Z" finished-at="2018-08-19T10:26:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase4_FavoritesAddSelectedToCart -->
+        <test-method status="PASS" signature="TestCase5_StandardListing()[pri:4, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase5_StandardListing" duration-ms="88792" started-at="2018-08-19T10:26:35Z" finished-at="2018-08-19T10:28:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase5_StandardListing -->
+        <test-method status="PASS" signature="TestCase6_StandardDetail()[pri:5, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase6_StandardDetail" duration-ms="56039" started-at="2018-08-19T10:28:04Z" finished-at="2018-08-19T10:29:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase6_StandardDetail -->
+        <test-method status="PASS" signature="TestCase7_CartPage()[pri:6, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase7_CartPage" duration-ms="58200" started-at="2018-08-19T10:29:00Z" finished-at="2018-08-19T10:29:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase7_CartPage -->
+        <test-method status="PASS" signature="TestCase8_CheckoutProcess()[pri:7, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase8_CheckoutProcess" duration-ms="83094" started-at="2018-08-19T10:29:58Z" finished-at="2018-08-19T10:31:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase8_CheckoutProcess -->
+        <test-method status="PASS" signature="TestCase9_TrackPage()[pri:8, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase9_TrackPage" duration-ms="124748" started-at="2018-08-19T10:31:22Z" finished-at="2018-08-19T10:33:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase9_TrackPage -->
+        <test-method status="PASS" signature="TestCase10_TrackPage()[pri:9, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase10_TrackPage" duration-ms="29235" started-at="2018-08-19T10:33:26Z" finished-at="2018-08-19T10:33:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase10_TrackPage -->
+        <test-method status="PASS" signature="TestCase11_CalendarsPage()[pri:10, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase11_CalendarsPage" duration-ms="25168" started-at="2018-08-19T10:33:56Z" finished-at="2018-08-19T10:34:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase11_CalendarsPage -->
+        <test-method status="PASS" signature="TestCase12_PuchaseAnalysis()[pri:11, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase12_PuchaseAnalysis" duration-ms="78302" started-at="2018-08-19T10:34:21Z" finished-at="2018-08-19T10:35:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase12_PuchaseAnalysis -->
+        <test-method status="PASS" signature="TestCase13_SavedReports()[pri:12, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase13_SavedReports" duration-ms="48531" started-at="2018-08-19T10:35:39Z" finished-at="2018-08-19T10:36:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase13_SavedReports -->
+        <test-method status="PASS" signature="TestCase14_TrackOrders()[pri:13, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase14_TrackOrders" duration-ms="64844" started-at="2018-08-19T10:36:28Z" finished-at="2018-08-19T10:37:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase14_TrackOrders -->
+        <test-method status="PASS" signature="TestCase15_TrackQuotes()[pri:14, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase15_TrackQuotes" duration-ms="61111" started-at="2018-08-19T10:37:32Z" finished-at="2018-08-19T10:38:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase15_TrackQuotes -->
+        <test-method status="FAIL" signature="TestCase16_MainReports()[pri:15, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase16_MainReports" duration-ms="75478" started-at="2018-08-19T10:38:34Z" finished-at="2018-08-19T10:39:49Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed in class - POMReportsPage]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed in class - POMReportsPage
+at org.testng.Assert.fail(Assert.java:96)
+at POMMarkITplacePages.POMReportsPage.AssetPage_Functionality(POMReportsPage.java:99)
+at TestngMethods.MainTestCaseFile.TestCase16_MainReports(MainTestCaseFile.java:269)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase16_MainReports -->
+        <test-method status="FAIL" signature="TestCase17_FooterPageOpens()[pri:16, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="TestCase17_FooterPageOpens" duration-ms="70051" started-at="2018-08-19T10:39:49Z" finished-at="2018-08-19T10:40:59Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed Testcase in class - POMFooter]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed Testcase in class - POMFooter
+at org.testng.Assert.fail(Assert.java:96)
+at POMMarkITplacePages.POMFooter.Navigate_Footer(POMFooter.java:161)
+at TestngMethods.MainTestCaseFile.TestCase17_FooterPageOpens(MainTestCaseFile.java:284)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase17_FooterPageOpens -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:TestngMethods.MainTestCaseFile@550ee7e5]" name="afterTest" is-config="true" duration-ms="3155" started-at="2018-08-19T10:40:59Z" finished-at="2018-08-19T10:41:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- TestngMethods.MainTestCaseFile -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

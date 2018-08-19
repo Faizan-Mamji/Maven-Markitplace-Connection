@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="7">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">15</td><td class="num">0</td><td class="num attn">2</td><td class="num">1,245,026</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">TestngMethods.MainTestCaseFile</td><td><a href="#m0">TestCase16_MainReports</a></td><td rowspan="1">1534675114050</td><td rowspan="1">75478</td></tr><tr class="failedeven"><td><a href="#m1">TestCase17_FooterPageOpens</a></td><td rowspan="1">1534675189535</td><td rowspan="1">70051</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="15">TestngMethods.MainTestCaseFile</td><td><a href="#m2">TestCase10_TrackPage</a></td><td rowspan="1">1534674806837</td><td rowspan="1">29235</td></tr><tr class="passedeven"><td><a href="#m3">TestCase11_CalendarsPage</a></td><td rowspan="1">1534674836078</td><td rowspan="1">25168</td></tr><tr class="passedeven"><td><a href="#m4">TestCase12_PuchaseAnalysis</a></td><td rowspan="1">1534674861251</td><td rowspan="1">78302</td></tr><tr class="passedeven"><td><a href="#m5">TestCase13_SavedReports</a></td><td rowspan="1">1534674939555</td><td rowspan="1">48531</td></tr><tr class="passedeven"><td><a href="#m6">TestCase14_TrackOrders</a></td><td rowspan="1">1534674988090</td><td rowspan="1">64844</td></tr><tr class="passedeven"><td><a href="#m7">TestCase15_TrackQuotes</a></td><td rowspan="1">1534675052935</td><td rowspan="1">61111</td></tr><tr class="passedeven"><td><a href="#m8">TestCase1_LoginPage</a></td><td rowspan="1">1534674033146</td><td rowspan="1">45230</td></tr><tr class="passedeven"><td><a href="#m9">TestCase2_SearchListingPage</a></td><td rowspan="1">1534674078380</td><td rowspan="1">184356</td></tr><tr class="passedeven"><td><a href="#m10">TestCase3_PDPTestCase</a></td><td rowspan="1">1534674262744</td><td rowspan="1">85008</td></tr><tr class="passedeven"><td><a href="#m11">TestCase4_FavoritesAddSelectedToCart</a></td><td rowspan="1">1534674347755</td><td rowspan="1">48179</td></tr><tr class="passedeven"><td><a href="#m12">TestCase5_StandardListing</a></td><td rowspan="1">1534674395935</td><td rowspan="1">88792</td></tr><tr class="passedeven"><td><a href="#m13">TestCase6_StandardDetail</a></td><td rowspan="1">1534674484728</td><td rowspan="1">56039</td></tr><tr class="passedeven"><td><a href="#m14">TestCase7_CartPage</a></td><td rowspan="1">1534674540772</td><td rowspan="1">58200</td></tr><tr class="passedeven"><td><a href="#m15">TestCase8_CheckoutProcess</a></td><td rowspan="1">1534674598976</td><td rowspan="1">83094</td></tr><tr class="passedeven"><td><a href="#m16">TestCase9_TrackPage</a></td><td rowspan="1">1534674682072</td><td rowspan="1">124748</td></tr></tbody>
+</table>
+<h2>Default test</h2><h3 id="m0">TestngMethods.MainTestCaseFile#TestCase16_MainReports</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Failed in class - POMReportsPage
+	at org.testng.Assert.fail(Assert.java:96)
+	at POMMarkITplacePages.POMReportsPage.AssetPage_Functionality(POMReportsPage.java:99)
+	at TestngMethods.MainTestCaseFile.TestCase16_MainReports(MainTestCaseFile.java:269)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">TestngMethods.MainTestCaseFile#TestCase17_FooterPageOpens</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Failed Testcase in class - POMFooter
+	at org.testng.Assert.fail(Assert.java:96)
+	at POMMarkITplacePages.POMFooter.Navigate_Footer(POMFooter.java:161)
+	at TestngMethods.MainTestCaseFile.TestCase17_FooterPageOpens(MainTestCaseFile.java:284)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">TestngMethods.MainTestCaseFile#TestCase10_TrackPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">TestngMethods.MainTestCaseFile#TestCase11_CalendarsPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">TestngMethods.MainTestCaseFile#TestCase12_PuchaseAnalysis</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">TestngMethods.MainTestCaseFile#TestCase13_SavedReports</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">TestngMethods.MainTestCaseFile#TestCase14_TrackOrders</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">TestngMethods.MainTestCaseFile#TestCase15_TrackQuotes</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">TestngMethods.MainTestCaseFile#TestCase1_LoginPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">TestngMethods.MainTestCaseFile#TestCase2_SearchListingPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">TestngMethods.MainTestCaseFile#TestCase3_PDPTestCase</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">TestngMethods.MainTestCaseFile#TestCase4_FavoritesAddSelectedToCart</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">TestngMethods.MainTestCaseFile#TestCase5_StandardListing</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">TestngMethods.MainTestCaseFile#TestCase6_StandardDetail</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">TestngMethods.MainTestCaseFile#TestCase7_CartPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">TestngMethods.MainTestCaseFile#TestCase8_CheckoutProcess</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">TestngMethods.MainTestCaseFile#TestCase9_TrackPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>
