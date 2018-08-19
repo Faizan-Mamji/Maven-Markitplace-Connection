@@ -64,7 +64,7 @@ public class MainTestCaseFile extends MainDriverClass {
 
 	}
 	
-	@Test(priority = 1)
+	/*@Test(priority = 1)
 	public void TestCase2_SearchListingPage() {
 
 		try {
@@ -290,7 +290,7 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 	
-
+*/
 	@AfterTest
 	public void afterTest() throws Exception {
 		//TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
