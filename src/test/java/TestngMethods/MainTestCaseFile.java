@@ -64,7 +64,7 @@ public class MainTestCaseFile extends MainDriverClass {
 
 	}
 	
-	/*@Test(priority = 1)
+	@Test(priority = 1)
 	public void TestCase2_SearchListingPage() {
 
 		try {
@@ -146,9 +146,9 @@ public class MainTestCaseFile extends MainDriverClass {
 		catch (Exception ex) {
 			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase7_CartPage() " + ex.getMessage());
 		}
-	}*/
+	}
 
-	@Test(priority = 7)
+	/*@Test(priority = 7)
 	public void TestCase8_CheckoutProcess() {
 
 		try {
@@ -160,9 +160,9 @@ public class MainTestCaseFile extends MainDriverClass {
 			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase8_CheckoutProcess() "
 					+ ex.getMessage());
 		}
-	}
+	}*/
 
-	/*
+	
 	@Test(priority = 8)
 	public void TestCase9_TrackPage() {
 
@@ -290,8 +290,7 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-	*/
-
+	
 	@AfterTest
 	public void afterTest() throws Exception {
 		//TestExecutionEmail ObjEmail= new TestExecutionEmail(maindriver);
