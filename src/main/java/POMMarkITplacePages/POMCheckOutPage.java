@@ -1,13 +1,15 @@
 package POMMarkITplacePages;
 
 import static org.testng.Assert.assertEquals;
+
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -61,7 +63,7 @@ public class POMCheckOutPage {
 	By ErrorCloseBtn = By.xpath("//button[@class='btn btn-default']");
 	By ClickLogoImage = By.xpath("//img[@class='logo']");
 
-	public void CompleteCheckout_Process() throws InterruptedException {
+	/*public void CompleteCheckout_Process() throws InterruptedException {
 		SoftAssert sf =new SoftAssert();
 		try {
 			// Step 1 of Checkout process
@@ -150,6 +152,25 @@ public class POMCheckOutPage {
 			
 			Assert.fail("Failed in class - POMCheckOutPage");
 		}
+	}*/
+	
+	
+	public void CompleteCheckout_Process() {
+		try {
+		driver.navigate().to("https://markitplace-qa.arpatech.com/shop/cart/checkout");
+		TimeUnit.SECONDS.sleep(6);
+		WebElement checkoutstep1=driver.findElement(By.xpath("//div[@class='step-subsection']//div[@class='row']"));
+		List<WebElement> elem = checkoutstep1.findElements(By.tagName("input"));
+		int count = elem.size();
+		System.out.println(count);
+		
+		}
+		
+		catch(Exception ex) {
+			logg.info(ex.getMessage());
+		}
+		
+		
 	}
 
 }
