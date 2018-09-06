@@ -28,7 +28,7 @@ public class POMOrdersPage {
 
 	By OrdersNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[3]");
 	By BtnLoadMore = By.id("load-more-link");
-	By OrderBuyItemAgain = By.xpath("(//a[contains(text(),'Buy Item(s) Again')])[1]");
+	By OrderBuyItemAgain = By.xpath("(//div[@class='action-area clearfix']//a)[1]");
 	By CartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[1]");
 	By OrdersTimePeriod = By.xpath("//select[@title='Select Time Period']");
 
