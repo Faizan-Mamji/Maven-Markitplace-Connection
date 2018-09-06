@@ -48,6 +48,7 @@ public class POMCheckOutPage {
 
 	// POM Of Step 3 (Notes for Recipient and Confirmations)
 
+	By Attention = By.id("");
 	By SendEmailConfirmation = By.id("tbEmailConfirmation");
 
 	// POM Of Step 4 (Review Order Details)
@@ -97,25 +98,24 @@ public class POMCheckOutPage {
 	 * logg.info("Save & Continue Button Click successfully");
 	 * 
 	 * // Step 3 of Checkout process
-	 * driver.findElement(SendEmailConfirmation).clear();
-	 * TimeUnit.MILLISECONDS.sleep(2000);
-	 * driver.findElement(SendEmailConfirmation).sendKeys(
-	 * "faizan.mamji@arpatech.com"); TimeUnit.MILLISECONDS.sleep(2000);
-	 * logg.info("Email entered successfully in textbox");
-	 * driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
-	 * logg.info("Save & Continue Button Click successfully");
+	  driver.findElement(SendEmailConfirmation).clear();
+	  TimeUnit.MILLISECONDS.sleep(2000);
+	  driver.findElement(SendEmailConfirmation).sendKeys(
+	  "faizan.mamji@arpatech.com"); TimeUnit.MILLISECONDS.sleep(2000);
+	  logg.info("Email entered successfully in textbox");
+	  driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
+	  logg.info("Save & Continue Button Click successfully");
 	 * 
 	 * // Step 4 of Checkout process driver.findElement(PlaceOrderBtn).click();
 	 * TimeUnit.MILLISECONDS.sleep(50000);
 	 * logg.info("Place Holder Button Click successfully!");
 	 * 
-	 * String TitleVerification = driver.getTitle(); if
-	 * (TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
-	 * sf.assertEquals(TitleVerification, OrderConfirmationTitle);
-	 * logg.info("Order Confirmation Page assertion verified successfully!");
-	 * logg.info("Order Confirmation Page Opens successfully!"); logg.
-	 * info("*********************** Checkout TestCase Passed ***********************"
-	 * );
+	  String TitleVerification = driver.getTitle(); 
+	 if(TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
+	 sf.assertEquals(TitleVerification, OrderConfirmationTitle);
+	  logg.info("Order Confirmation Page assertion verified successfully!");
+	  logg.info("Order Confirmation Page Opens successfully!"); logg.
+	  info("*********************** Checkout TestCase Passed ***********************" );
 	 * 
 	 * }
 	 * 
@@ -139,23 +139,76 @@ public class POMCheckOutPage {
 
 	public void CompleteCheckout_Process() {
 		Random rnd = new Random();
-		int value = rnd.nextInt(986522)+3;
+		int Randomvalue = rnd.nextInt(986522) + 3;
+		SoftAssert sf = new SoftAssert();
 
 		try {
+			// Start Checkout Step 1
+			logg.info("CheckOut TestCase Starts Here");
 			driver.navigate().to("https://markitplace-qa.arpatech.com/shop/cart/checkout");
 			TimeUnit.SECONDS.sleep(6);
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
 			List<WebElement> elem = checkoutstep1.findElements(By.tagName("input"));
 			int count = elem.size();
-			System.out.println(count);
-
+			logg.info("Total textbox appears for Select Payment Method is " + count);
 			for (int i = 1; i <= count; i++) {
-				driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]")).sendKeys(String.valueOf(value));
+				driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]"))
+						.sendKeys(String.valueOf(Randomvalue));
+				TimeUnit.SECONDS.sleep(3);
+				logg.info("Total textbox appears for Select Payment Method is " + count);
 			}
 
-			driver.findElement(SaveBtn).click();
+			String BillingAddressText = driver.findElement(CheckBillingAddress).getText();
 
+			if (BillingAddressText.contains(CheckBillingAddressText)) {
+				driver.findElement(OpenBillingAddressDropdown).click();
+				logg.info("Select Billing address dropdown opens successfully");
+				driver.findElement(SelectBillingAddressValue).click();
+				logg.info("Billing address dropdown value selected successfully");
+				driver.findElement(SaveBtn).click();
+				TimeUnit.SECONDS.sleep(4);
+				logg.info("Save & Continue Button Click successfully");
+			}
+
+			else {
+				driver.findElement(SaveBtn).click();
+				TimeUnit.SECONDS.sleep(4);
+				logg.info("Save & Continue Button Click successfully");
+			}
+
+			// End Checkout Step 1
+
+			// Start checkout step 2
+			
+			logg.info("Now selection of address on checkout page");
+			driver.findElement(SelectAddress).click();
+			TimeUnit.SECONDS.sleep(2);
+			logg.info("Address selects successfully");
+			driver.findElement(UseThisAddressBtn).click();
+			TimeUnit.SECONDS.sleep(3);
+			logg.info("Use this button click successfully");
+			String GetCustomValue = driver.findElement(Attention).getText();
+			
+			driver.findElement(SaveBtn).click();
+			TimeUnit.SECONDS.sleep(4);
+			logg.info("Save & Continue Button Click successfully");
+
+			// End Checkout Step 2
+			
+			// Step 3 of Checkout process
+			
+			  
+			  driver.findElement(SendEmailConfirmation).clear();
+			  TimeUnit.SECONDS.sleep(2);
+			  driver.findElement(SendEmailConfirmation).sendKeys("faizan.mamji@arpatech.com"); 
+			  TimeUnit.SECONDS.sleep(2);
+			  logg.info("Email entered successfully in textbox");
+			  driver.findElement(SaveBtn).click(); 
+			  TimeUnit.SECONDS.sleep(4);
+			  logg.info("Save & Continue Button Click successfully");
 		}
+		
+		
 
 		catch (Exception ex) {
 			logg.info(ex.getMessage());
