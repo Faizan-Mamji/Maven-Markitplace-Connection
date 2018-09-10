@@ -35,7 +35,7 @@ public class POMCheckOutPage {
 	// Declare Checkout Page POM
 
 	// POM Of Step 1 (Select Payment Method)
-	By SelectPaymentBox = By.xpath("//div[@class='step-subsection']//div[@class='row']");
+	By SelectPaymentBox = By.xpath("//div[@class='step-subsection ccf-box']//div[@class='row']");
 	By CheckBillingAddress = By.xpath("//div[@class='step-subsection last']");
 	By OpenBillingAddressDropdown = By.xpath("//div[@class='predictive-dropdown-arrow']");
 	By SelectBillingAddressValue = By.xpath("//div[@class='predictive-quickfind-container']//li[1]");
@@ -45,6 +45,8 @@ public class POMCheckOutPage {
 	// POM Of Step 2 (Shipping Information)
 	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
+	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
+	By CustomBox = By.xpath("//div[@class='fourcolumns']");
 
 	// POM Of Step 3 (Notes for Recipient and Confirmations)
 
@@ -98,24 +100,25 @@ public class POMCheckOutPage {
 	 * logg.info("Save & Continue Button Click successfully");
 	 * 
 	 * // Step 3 of Checkout process
-	  driver.findElement(SendEmailConfirmation).clear();
-	  TimeUnit.MILLISECONDS.sleep(2000);
-	  driver.findElement(SendEmailConfirmation).sendKeys(
-	  "faizan.mamji@arpatech.com"); TimeUnit.MILLISECONDS.sleep(2000);
-	  logg.info("Email entered successfully in textbox");
-	  driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
-	  logg.info("Save & Continue Button Click successfully");
+	 * driver.findElement(SendEmailConfirmation).clear();
+	 * TimeUnit.MILLISECONDS.sleep(2000);
+	 * driver.findElement(SendEmailConfirmation).sendKeys(
+	 * "faizan.mamji@arpatech.com"); TimeUnit.MILLISECONDS.sleep(2000);
+	 * logg.info("Email entered successfully in textbox");
+	 * driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
+	 * logg.info("Save & Continue Button Click successfully");
 	 * 
 	 * // Step 4 of Checkout process driver.findElement(PlaceOrderBtn).click();
 	 * TimeUnit.MILLISECONDS.sleep(50000);
 	 * logg.info("Place Holder Button Click successfully!");
 	 * 
-	  String TitleVerification = driver.getTitle(); 
-	 if(TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
-	 sf.assertEquals(TitleVerification, OrderConfirmationTitle);
-	  logg.info("Order Confirmation Page assertion verified successfully!");
-	  logg.info("Order Confirmation Page Opens successfully!"); logg.
-	  info("*********************** Checkout TestCase Passed ***********************" );
+	 * String TitleVerification = driver.getTitle();
+	 * if(TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
+	 * sf.assertEquals(TitleVerification, OrderConfirmationTitle);
+	 * logg.info("Order Confirmation Page assertion verified successfully!");
+	 * logg.info("Order Confirmation Page Opens successfully!"); logg.
+	 * info("*********************** Checkout TestCase Passed ***********************"
+	 * );
 	 * 
 	 * }
 	 * 
@@ -179,7 +182,7 @@ public class POMCheckOutPage {
 			// End Checkout Step 1
 
 			// Start checkout step 2
-			
+
 			logg.info("Now selection of address on checkout page");
 			driver.findElement(SelectAddress).click();
 			TimeUnit.SECONDS.sleep(2);
@@ -187,28 +190,29 @@ public class POMCheckOutPage {
 			driver.findElement(UseThisAddressBtn).click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Use this button click successfully");
-			String GetCustomValue = driver.findElement(Attention).getText();
+			String GetCustomText = driver.findElement(CustomMessage).getText();
+			if (GetCustomText != "") {
+				WebElement CustomBox = driver.findElement(SelectPaymentBox); 
 			
+			}
+
 			driver.findElement(SaveBtn).click();
 			TimeUnit.SECONDS.sleep(4);
 			logg.info("Save & Continue Button Click successfully");
 
 			// End Checkout Step 2
-			
+
 			// Step 3 of Checkout process
-			
-			  
-			  driver.findElement(SendEmailConfirmation).clear();
-			  TimeUnit.SECONDS.sleep(2);
-			  driver.findElement(SendEmailConfirmation).sendKeys("faizan.mamji@arpatech.com"); 
-			  TimeUnit.SECONDS.sleep(2);
-			  logg.info("Email entered successfully in textbox");
-			  driver.findElement(SaveBtn).click(); 
-			  TimeUnit.SECONDS.sleep(4);
-			  logg.info("Save & Continue Button Click successfully");
+
+			driver.findElement(SendEmailConfirmation).clear();
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(SendEmailConfirmation).sendKeys("faizan.mamji@arpatech.com");
+			TimeUnit.SECONDS.sleep(2);
+			logg.info("Email entered successfully in textbox");
+			driver.findElement(SaveBtn).click();
+			TimeUnit.SECONDS.sleep(4);
+			logg.info("Save & Continue Button Click successfully");
 		}
-		
-		
 
 		catch (Exception ex) {
 			logg.info(ex.getMessage());
