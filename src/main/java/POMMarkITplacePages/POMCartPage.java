@@ -50,12 +50,12 @@ public class POMCartPage {
 			TimeUnit.MILLISECONDS.sleep(5000);
 			logg.info("Price updated successfully against which the qty updated");
 			TimeUnit.MILLISECONDS.sleep(2000);			
-			/*driver.findElement(ProceedCheckout).click();
+			driver.findElement(ProceedCheckout).click();
 			logg.info("Proceed To Checkout button click successfully");
 			TimeUnit.MILLISECONDS.sleep(10000);
 			sf.assertEquals(driver.getTitle(), CheckoutPageTitle);
 			logg.info("Assertion passed of checkout page title");
-			logg.info("*********************** Cart Page TestCase Passed ***********************");*/
+			logg.info("*********************** Cart Page TestCase Passed ***********************");
 		}
 
 		catch (Exception ex) {

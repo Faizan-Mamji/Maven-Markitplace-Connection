@@ -2,6 +2,7 @@ package POMMarkITplacePages;
 
 import static org.testng.Assert.assertEquals;
 
+import java.awt.RenderingHints.Key;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -50,7 +52,7 @@ public class POMCheckOutPage {
 
 	// POM Of Step 3 (Notes for Recipient and Confirmations)
 
-	By Attention = By.id("");
+	By Attention = By.xpath("(//input[@type='text'])[1]");
 	By SendEmailConfirmation = By.id("tbEmailConfirmation");
 
 	// POM Of Step 4 (Review Order Details)
@@ -144,12 +146,11 @@ public class POMCheckOutPage {
 		Random rnd = new Random();
 		int Randomvalue = rnd.nextInt(986522) + 3;
 		SoftAssert sf = new SoftAssert();
+		Actions action = new Actions(driver);
 
 		try {
 			// Start Checkout Step 1
 			logg.info("CheckOut TestCase Starts Here");
-			driver.navigate().to("https://markitplace-qa.arpatech.com/shop/cart/checkout");
-			TimeUnit.SECONDS.sleep(6);
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
 			List<WebElement> elem = checkoutstep1.findElements(By.tagName("input"));
 			int count = elem.size();
@@ -191,9 +192,27 @@ public class POMCheckOutPage {
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Use this button click successfully");
 			String GetCustomText = driver.findElement(CustomMessage).getText();
+			logg.info("Get some label text i.e " + GetCustomText);
 			if (GetCustomText != "") {
-				WebElement CustomBox = driver.findElement(SelectPaymentBox); 
-			
+				WebElement Customtextboxes = driver.findElement(CustomBox);
+				List<WebElement> CustomFieds = Customtextboxes.findElements(By.tagName("label"));
+				int TotalCount = CustomFieds.size();
+				
+				System.out.println(TotalCount);
+
+				for (int j = 1; j <= TotalCount; j++) {
+					WebElement CustomfieldsTextBox = driver
+							.findElement(By.xpath("(//div[@class='fourcolumns']//div//textarea)[" + j + "]"));
+					TimeUnit.SECONDS.sleep(2);
+					action.moveToElement(CustomfieldsTextBox);
+					action.click();
+					TimeUnit.SECONDS.sleep(2);
+					action.sendKeys("Testing");
+					TimeUnit.SECONDS.sleep(2);
+					logg.info("Fill the textbox no# " +j);
+					action.build().perform();
+					TimeUnit.SECONDS.sleep(2);
+				}
 			}
 
 			driver.findElement(SaveBtn).click();
@@ -203,19 +222,57 @@ public class POMCheckOutPage {
 			// End Checkout Step 2
 
 			// Step 3 of Checkout process
-
+			driver.findElement(Attention).clear();
+			driver.findElement(Attention).sendKeys("Faizan Mamji");
+			TimeUnit.SECONDS.sleep(2);
+			logg.info("Enter text in attention textbox");
 			driver.findElement(SendEmailConfirmation).clear();
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(SendEmailConfirmation).sendKeys("faizan.mamji@arpatech.com");
 			TimeUnit.SECONDS.sleep(2);
+			logg.info("Enter text in Email textbox");
 			logg.info("Email entered successfully in textbox");
 			driver.findElement(SaveBtn).click();
 			TimeUnit.SECONDS.sleep(4);
 			logg.info("Save & Continue Button Click successfully");
+
+			// Step 4 of Checkout process
+			driver.findElement(PlaceOrderBtn).click();
+			TimeUnit.SECONDS.sleep(50);
+			logg.info("Place Holder Button Click successfully!");
+
+			String TitleVerification = driver.getTitle();
+			if (TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
+				sf.assertEquals(TitleVerification, OrderConfirmationTitle);
+				logg.info("Order Confirmation Page assertion verified successfully!");
+				logg.info("Order Confirmation Page Opens successfully!");
+				logg.info("*********************** Checkout TestCase Passed ***********************");
+
+			}
+
+			else {
+				String errormessage = driver.findElement(ErrorOopsBox).getText();
+				if (errormessage.equalsIgnoreCase(CheckOutErrorMessage)) {
+					driver.findElement(ErrorCloseBtn).click();
+					TimeUnit.MILLISECONDS.sleep(2000);
+					logg.info("Oops box close on checkout page!");
+					driver.findElement(ClickLogoImage).click();
+					logg.info("Navigate to Home page!");
+					logg.info(
+							"*********************** Checkout Not Done Due To Api Issue As It Opens Oops Modal ***********************");
+				}
+
+			}
 		}
 
-		catch (Exception ex) {
-			logg.info(ex.getMessage());
+		catch (
+
+		Exception ex) {
+			logg.info(
+					"POMCheckOutPage - Exception!!! - There is some issue while doing checkout or may be it shouldn't navigate to order confirmation page "
+							+ ex.getMessage());
+
+			Assert.fail("Failed in class - POMCheckOutPage");
 		}
 
 	}

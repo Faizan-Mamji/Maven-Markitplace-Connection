@@ -24,7 +24,7 @@ public class MainDriverClass {
     }
 
     public WebDriver genericDriver()  throws IOException{
-        FileInputStream fs = new FileInputStream(".\\ConfigurationFile\\configuration.properties");;
+        FileInputStream fs = new FileInputStream(".\\ConfigurationFile\\configuration.properties");
         try
         {
             logg.info("Browser function starts");

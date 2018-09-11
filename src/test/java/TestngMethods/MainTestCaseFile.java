@@ -41,8 +41,8 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "gcarrasco@netflix.com";
-	String Login_Password = "Arp@tech1";
+	String Login_UserName = "arpatech1@connection.com";
+	String Login_Password = "Arp@tech5";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
 	@BeforeTest
@@ -63,6 +63,7 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 
 	}
+	
 	
 	@Test(priority = 1)
 	public void TestCase2_SearchListingPage() {
@@ -146,8 +147,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		catch (Exception ex) {
 			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase7_CartPage() " + ex.getMessage());
 		}
-	}
-	/*
+	} 
+	
 	@Test(priority = 7)
 	public void TestCase8_CheckoutProcess() {
 
@@ -161,7 +162,7 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-*/
+
 	
 	
 	
