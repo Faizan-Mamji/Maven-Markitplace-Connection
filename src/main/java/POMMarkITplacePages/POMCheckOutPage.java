@@ -47,7 +47,7 @@ public class POMCheckOutPage {
 	// POM Of Step 2 (Shipping Information)
 	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
-	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
+	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div)[1]");
 	By CustomBox = By.xpath("//div[@class='fourcolumns']");
 
 	// POM Of Step 3 (Notes for Recipient and Confirmations)
@@ -150,6 +150,7 @@ public class POMCheckOutPage {
 
 		try {
 			// Start Checkout Step 1
+			// driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
 			logg.info("CheckOut TestCase Starts Here");
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
 			List<WebElement> elem = checkoutstep1.findElements(By.tagName("input"));
@@ -197,7 +198,7 @@ public class POMCheckOutPage {
 				WebElement Customtextboxes = driver.findElement(CustomBox);
 				List<WebElement> CustomFieds = Customtextboxes.findElements(By.tagName("label"));
 				int TotalCount = CustomFieds.size();
-				
+
 				System.out.println(TotalCount);
 
 				for (int j = 1; j <= TotalCount; j++) {
@@ -209,7 +210,7 @@ public class POMCheckOutPage {
 					TimeUnit.SECONDS.sleep(2);
 					action.sendKeys("Testing");
 					TimeUnit.SECONDS.sleep(2);
-					logg.info("Fill the textbox no# " +j);
+					logg.info("Fill the textbox no# " + j);
 					action.build().perform();
 					TimeUnit.SECONDS.sleep(2);
 				}
