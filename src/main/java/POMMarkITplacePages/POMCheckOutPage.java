@@ -1,8 +1,5 @@
 package POMMarkITplacePages;
 
-import static org.testng.Assert.assertEquals;
-
-import java.awt.RenderingHints.Key;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
