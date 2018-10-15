@@ -296,7 +296,7 @@ public class MainTestCaseFile extends MainDriverClass {
 	
 	@AfterTest
 	public void afterTest() throws Exception {
-		maindriver.quit();
+		maindriver.close();
 		
 	}
 }
