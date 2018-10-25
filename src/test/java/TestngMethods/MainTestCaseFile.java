@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import DriverMainPackage.MainDriverClass;
 import POMMarkITplacePages.POMCalendarsPage;
 import POMMarkITplacePages.POMCartPage;
-import POMMarkITplacePages.POMCheckOutPage;
+import POMMarkITplacePages.POMOrderCheckOutPage;
 import POMMarkITplacePages.POMFavoritesPage;
 import POMMarkITplacePages.POMFooter;
 import POMMarkITplacePages.POMLoginPage;
@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import POMMarkITplacePages.POMProductDetail;
 import POMMarkITplacePages.POMPurchaseAnalysisPage;
+import POMMarkITplacePages.POMQuotesCheckout;
 import POMMarkITplacePages.POMQuotesPage;
 import POMMarkITplacePages.POMReportsPage;
 import POMMarkITplacePages.POMSavedReportsPage;
@@ -41,8 +42,8 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "solveit@connection.com";
-	String Login_Password = "S0lveit!";
+	String Login_UserName = "arpatech1@connection.com";
+	String Login_Password = "Arp@tech5";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
 	@BeforeTest
@@ -153,7 +154,7 @@ public class MainTestCaseFile extends MainDriverClass {
 	public void TestCase8_CheckoutProcess() {
 
 		try {
-			POMCheckOutPage ObjCheckout = new POMCheckOutPage(maindriver);
+			POMOrderCheckOutPage ObjCheckout = new POMOrderCheckOutPage(maindriver);
 			ObjCheckout.CompleteCheckout_Process();
 		}
 
@@ -163,6 +164,20 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
+	
+/*	@Test(priority = 7)
+	public void TestCase8_QuoteCheckoutProcess() {
+
+		try {
+			POMQuotesCheckout ObjQuoteChekcout=new POMQuotesCheckout(maindriver);
+			ObjQuoteChekcout.CompleteQuoteCheckout_Process();
+		}
+
+		catch (Exception ex) {
+			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase8_CheckoutProcess() "
+					+ ex.getMessage());
+		}
+	}*/
 	
 	
 	

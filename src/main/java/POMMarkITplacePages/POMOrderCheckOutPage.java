@@ -12,10 +12,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-public class POMCheckOutPage {
+public class POMOrderCheckOutPage {
 
 	public static WebDriver driver;
-	static final Logger logg = LogManager.getLogger(POMCheckOutPage.class);
+	static final Logger logg = LogManager.getLogger(POMOrderCheckOutPage.class);
 	Random rnd = new Random();
 	int PO = rnd.nextInt(999999);
 	String CheckBillingAddressText = "Select billing address";
@@ -27,8 +27,8 @@ public class POMCheckOutPage {
 	public static void main(String[] args) {
 	}
 
-	public POMCheckOutPage(WebDriver driver) {
-		POMCheckOutPage.driver = driver;
+	public POMOrderCheckOutPage(WebDriver driver) {
+		POMOrderCheckOutPage.driver = driver;
 	}
 
 	// Declare Checkout Page POM
