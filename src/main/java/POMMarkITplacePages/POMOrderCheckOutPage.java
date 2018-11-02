@@ -150,7 +150,7 @@ public class POMOrderCheckOutPage {
 
 		try {
 			// Start Checkout Step 1
-			driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
+			//driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
 			logg.info("CheckOut TestCase Starts Here");
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
 			List<WebElement> textboxelem = checkoutstep1.findElements(By.tagName("input"));

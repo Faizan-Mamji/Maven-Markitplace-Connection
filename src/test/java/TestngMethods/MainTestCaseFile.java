@@ -42,8 +42,8 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "arpatech1@connection.com";
-	String Login_Password = "Arp@tech5";
+	String Login_UserName = "arpatechCustomFields@connection.com";
+	String Login_Password = "UQV:t7_X";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
 	@BeforeTest
@@ -66,7 +66,7 @@ public class MainTestCaseFile extends MainDriverClass {
 	}
 	
 	
-	@Test(priority = 1)
+/*	@Test(priority = 1)
 	public void TestCase2_SearchListingPage() {
 
 		try {
@@ -163,9 +163,9 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-
+*/
 	
-/*	@Test(priority = 7)
+	@Test(priority = 7)
 	public void TestCase8_QuoteCheckoutProcess() {
 
 		try {
@@ -177,11 +177,11 @@ public class MainTestCaseFile extends MainDriverClass {
 			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase8_CheckoutProcess() "
 					+ ex.getMessage());
 		}
-	}*/
+	}
 	
 	
 	
-	@Test(priority = 8)
+/*	@Test(priority = 8)
 	public void TestCase9_TrackPage() {
 
 		try {
@@ -308,7 +308,7 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-	
+*/	
 	@AfterTest
 	public void afterTest() throws Exception {
 		maindriver.close();

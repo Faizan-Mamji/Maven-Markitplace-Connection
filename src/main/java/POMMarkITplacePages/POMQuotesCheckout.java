@@ -46,7 +46,7 @@ public class POMQuotesCheckout {
 	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
 	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
-	By TotalLineItems = By.id("standardLineFields");
+	By TotalLineItems = By.xpath("//form[@id='standardLineFields']");
 
 	public void CompleteQuoteCheckout_Process() {
 		MainDriverClass ObjMain = new MainDriverClass();
@@ -84,7 +84,7 @@ public class POMQuotesCheckout {
 			List<WebElement> ListDrpFields = DropdownFieldsStep1.findElements(By.tagName("select"));
 			TimeUnit.SECONDS.sleep(3);
 			int CountDropdown = ListDrpFields.size();
-			System.out.println("The count is " + CountDropdown);
+			logg.info("The count is " + CountDropdown);
 
 			if (CountTextBox > 0) {
 				for (int i = 1; i <= CountTextBox; i++) {
@@ -97,8 +97,13 @@ public class POMQuotesCheckout {
 
 			if (CountDropdown > 0) {
 				for (int j = 1; j <= CountDropdown; j++) {
-					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + j + "]"))
+					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])["+j+"]"))
+					.click();
+					
+					logg.info("Dropdown "+j+ " opens" );
+					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])["+j+"]//option[1]"))
 							.click();
+					
 					logg.info("Value selected for Dropdown " + j);
 					TimeUnit.SECONDS.sleep(1);
 
