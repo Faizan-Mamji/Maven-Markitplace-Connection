@@ -22,7 +22,9 @@ public class POMQuotesCheckout {
 	String GetUrl;
 	String CompleteURL = "shop/favorites";
 	String QuoteCheckoutPageTitle = "Checkout - MarkITplace";
+	String QuoteConfirmationTitle = "Quote Confirmation - MarkITplace";
 	String BillingHeadingText = "Select billing address";
+	String CheckOutErrorMessage = "Oops! Your order could not be processed at this time. Your Account Team is ready to help or try again.";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -47,6 +49,12 @@ public class POMQuotesCheckout {
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
 	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
 	By TotalLineItems = By.xpath("//form[@id='standardLineFields']");
+	By Attention = By.xpath("(//input[@type='text'])[1]");
+	By SendEmailConfirmation = By.id("tbEmailConfirmation");
+	By CreateQuoteBtn = By.xpath("(//a[contains(text(),'Create Quote')])[1]");
+	By ErrorOopsBox = By.xpath("//div[@class='modal-dialog']//span");
+	By ErrorCloseBtn = By.xpath("//button[@class='btn btn-default']");
+	By ClickLogoImage = By.xpath("//img[@class='logo']");
 
 	public void CompleteQuoteCheckout_Process() {
 		MainDriverClass ObjMain = new MainDriverClass();
@@ -97,13 +105,14 @@ public class POMQuotesCheckout {
 
 			if (CountDropdown > 0) {
 				for (int j = 1; j <= CountDropdown; j++) {
-					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])["+j+"]"))
-					.click();
-					
-					logg.info("Dropdown "+j+ " opens" );
-					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])["+j+"]//option[1]"))
+					driver.findElement(By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + j + "]"))
 							.click();
-					
+
+					logg.info("Dropdown " + j + " opens");
+					driver.findElement(
+							By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + j + "]//option[1]"))
+							.click();
+
 					logg.info("Value selected for Dropdown " + j);
 					TimeUnit.SECONDS.sleep(1);
 
@@ -140,7 +149,8 @@ public class POMQuotesCheckout {
 			WebElement Step2LineItems = driver.findElement(TotalLineItems);
 			logg.info("Proceed to List ProductsLineItems");
 			TimeUnit.SECONDS.sleep(1);
-			List<WebElement> ProductsLineItems = Step2LineItems.findElements(By.className(".cart-item-container.clearfix"));
+			List<WebElement> ProductsLineItems = Step2LineItems
+					.findElements(By.xpath("//div[@class='cart-item clearfix']"));
 			logg.info("Passed from List ProductsLineItems");
 			int countProductsLineItems = ProductsLineItems.size();
 
@@ -148,8 +158,88 @@ public class POMQuotesCheckout {
 				String GetCustomText = driver.findElement(CustomMessage).getText();
 				logg.info("Get some label text i.e " + GetCustomText);
 				
-			}
+				if (GetCustomText != "") {
+				
+					WebElement CustomBox = driver.findElement(By.xpath("//form[@id='standardLineFields']"));
+					List<WebElement> Customdropdown = CustomBox.findElements(By.tagName("select"));
+					int CountCustomDropdown = Customdropdown.size();
+					logg.info("Total count of custom dropdown is " + CountCustomDropdown);
+					List<WebElement> CustomTextarea = CustomBox.findElements(By.tagName("textarea"));
+					int CountCustomTextarea = CustomTextarea.size();
+					logg.info("Total count of custom textarea is " + CountCustomTextarea);
 
+					if (CountCustomDropdown > 0) {
+						for (int q = 1; q <= CountCustomDropdown; q++) {
+							driver.findElement(
+									By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + q + "]"))
+									.click();
+							logg.info("Custom Dropdown opens");
+							driver.findElement(By.xpath(
+									"(//select[@class='native-drop native-drop-checkout'])[" + q + "]//option[1]"))
+									.click();
+							logg.info("Custom Dropdown value selected " + q);
+
+						}
+					}
+
+					if (CountCustomTextarea > 0) {
+						for (int m = 1; m <= CountCustomTextarea; m++) {
+							driver.findElement(
+									By.xpath("(//div[@class='custom-field-container']//textarea)[" + m + "]"))
+									.sendKeys("TextArea " + m);
+							logg.info("Custom text enters in TextArea " +m);
+						}
+					}
+				}
+				
+				driver.findElement(SaveBtn).click();
+				TimeUnit.SECONDS.sleep(4);
+				logg.info("Save & Continue Button Click successfully");
+
+				// End Checkout Step 2
+
+				// Step 3 of Checkout process
+				driver.findElement(Attention).clear();
+				driver.findElement(Attention).sendKeys("Faizan Mamji");
+				TimeUnit.SECONDS.sleep(2);
+				logg.info("Enter text in attention textbox");
+				driver.findElement(SendEmailConfirmation).clear();
+				TimeUnit.SECONDS.sleep(2);
+				driver.findElement(SendEmailConfirmation).sendKeys("faizan.mamji@arpatech.com");
+				TimeUnit.SECONDS.sleep(2);
+				logg.info("Enter text in Email textbox");
+				logg.info("Email entered successfully in textbox");
+				driver.findElement(SaveBtn).click();
+				TimeUnit.SECONDS.sleep(4);
+				logg.info("Save & Continue Button Click successfully");
+
+				// Step 4 of Checkout process
+				driver.findElement(CreateQuoteBtn).click();
+				TimeUnit.SECONDS.sleep(50);
+				logg.info("Place Holder Button Click successfully!");
+
+				String TitleVerification = driver.getTitle();
+				if (TitleVerification.equalsIgnoreCase(QuoteConfirmationTitle)) {
+					sf.assertEquals(TitleVerification, QuoteConfirmationTitle);
+					logg.info("Quote Confirmation Page assertion verified successfully!");
+					logg.info("Quote Confirmation Page Opens successfully!");
+					logg.info("*********************** Quote Checkout TestCase Passed ***********************");
+
+				}
+
+				else {
+					String errormessage = driver.findElement(ErrorOopsBox).getText();
+					if (errormessage.equalsIgnoreCase(CheckOutErrorMessage)) {
+						driver.findElement(ErrorCloseBtn).click();
+						TimeUnit.MILLISECONDS.sleep(2000);
+						logg.info("Oops box close on checkout page!");
+						driver.findElement(ClickLogoImage).click();
+						logg.info("Navigate to Home page!");
+						logg.info(
+								"*********************** Quote Checkout Not Done Due To Api Issue As It Opens Oops Modal ***********************");
+					}
+				}
+			}
 		}
 
 		catch (Exception ex) {

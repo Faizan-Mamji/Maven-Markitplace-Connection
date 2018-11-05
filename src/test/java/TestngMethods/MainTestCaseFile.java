@@ -42,8 +42,8 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "arpatechCustomFields@connection.com";
-	String Login_Password = "UQV:t7_X";
+	String Login_UserName = "arpatech1@connection.com";
+	String Login_Password = "Arp@tech5";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
 	@BeforeTest
@@ -64,9 +64,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 
 	}
-	
-	
-/*	@Test(priority = 1)
+
+	@Test(priority = 1)
 	public void TestCase2_SearchListingPage() {
 
 		try {
@@ -80,7 +79,7 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-		@Test(priority = 2)
+	@Test(priority = 2)
 	public void TestCase3_PDPTestCase() {
 
 		try {
@@ -94,7 +93,7 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-		
+
 	@Test(priority = 3)
 	public void TestCase4_FavoritesAddSelectedToCart() {
 
@@ -148,8 +147,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		catch (Exception ex) {
 			logg.info("TestngMethods - Exception!!! - There is some issue on TestCase7_CartPage() " + ex.getMessage());
 		}
-	} 
-	
+	}
+
 	@Test(priority = 7)
 	public void TestCase8_CheckoutProcess() {
 
@@ -163,13 +162,12 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-*/
-	
-	@Test(priority = 7)
-	public void TestCase8_QuoteCheckoutProcess() {
+
+	@Test(priority = 8)
+	public void TestCase9_QuoteCheckoutProcess() {
 
 		try {
-			POMQuotesCheckout ObjQuoteChekcout=new POMQuotesCheckout(maindriver);
+			POMQuotesCheckout ObjQuoteChekcout = new POMQuotesCheckout(maindriver);
 			ObjQuoteChekcout.CompleteQuoteCheckout_Process();
 		}
 
@@ -178,11 +176,9 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-	
-	
-	
-/*	@Test(priority = 8)
-	public void TestCase9_TrackPage() {
+
+	@Test(priority = 9)
+	public void TestCase10_TrackPage() {
 
 		try {
 			POMTrackPage ObjTrack = new POMTrackPage(maindriver);
@@ -195,8 +191,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 9)
-	public void TestCase10_TrackPage() {
+	@Test(priority = 10)
+	public void TestCase11_TrackSearchResultPage() {
 
 		try {
 			POMTrackSearchResultPage ObjTrackSearch = new POMTrackSearchResultPage(maindriver);
@@ -210,8 +206,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 10)
-	public void TestCase11_CalendarsPage() {
+	@Test(priority = 11)
+	public void TestCase12_CalendarsPage() {
 
 		try {
 			POMCalendarsPage ObjCalendars = new POMCalendarsPage(maindriver);
@@ -224,8 +220,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 11)
-	public void TestCase12_PuchaseAnalysis() {
+	@Test(priority = 12)
+	public void TestCase13_PuchaseAnalysis() {
 
 		try {
 			POMPurchaseAnalysisPage ObjPurchase = new POMPurchaseAnalysisPage(maindriver);
@@ -238,8 +234,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 12)
-	public void TestCase13_SavedReports() {
+	@Test(priority = 13)
+	public void TestCase14_SavedReports() {
 
 		try {
 			POMSavedReportsPage ObjSavedReport = new POMSavedReportsPage(maindriver);
@@ -252,8 +248,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 13)
-	public void TestCase14_TrackOrders() {
+	@Test(priority = 14)
+	public void TestCase15_TrackOrders() {
 
 		try {
 			POMOrdersPage ObjOrders = new POMOrdersPage(maindriver);
@@ -266,8 +262,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 14)
-	public void TestCase15_TrackQuotes() {
+	@Test(priority = 15)
+	public void TestCase16_TrackQuotes() {
 
 		try {
 			POMQuotesPage ObjQuotes = new POMQuotesPage(maindriver);
@@ -280,11 +276,11 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 15)
-	public void TestCase16_MainReports() {
+	@Test(priority = 16)
+	public void TestCase17_MainReports() {
 
 		try {
-			POMReportsPage	 ObjReports = new POMReportsPage(maindriver);
+			POMReportsPage ObjReports = new POMReportsPage(maindriver);
 			ObjReports.AssetPage_Functionality();
 			ObjReports.AllReportsPage_Functionality();
 		}
@@ -295,8 +291,8 @@ public class MainTestCaseFile extends MainDriverClass {
 		}
 	}
 
-	@Test(priority = 16)
-	public void TestCase17_FooterPageOpens() {
+	@Test(priority = 17)
+	public void TestCase18_FooterPageOpens() {
 
 		try {
 			POMFooter ObjFooter = new POMFooter(maindriver);
@@ -308,10 +304,10 @@ public class MainTestCaseFile extends MainDriverClass {
 					+ ex.getMessage());
 		}
 	}
-*/	
+
 	@AfterTest
 	public void afterTest() throws Exception {
 		maindriver.close();
-		
+
 	}
 }
