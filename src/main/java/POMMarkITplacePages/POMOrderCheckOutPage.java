@@ -155,19 +155,20 @@ public class POMOrderCheckOutPage {
 			logg.info("CheckOut TestCase Starts Here");
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
 			List<WebElement> textboxelem = checkoutstep1.findElements(By.tagName("input"));
-			int count = textboxelem.size();
+			int TextBoxcount = textboxelem.size();
+			logg.info("Total textbox appears for Select Payment Method is " + TextBoxcount);
 			List<WebElement> dropdownelement = checkoutstep1.findElements(By.tagName("select"));
 			int drpcount = dropdownelement.size();
-			logg.info("Total textbox appears for Select Payment Method is " + count);
-			if (count > 0) {
-				for (int i = 1; i <= count; i++) {
-					// String CheckLabels=
-					// driver.findElement(By.xpath("(//div[@class='row']//div//select)[1]")).getTagName();
-					// if(CheckLabels.contains("")) {
+			logg.info("Total dropdown appears for Select Payment Method is " + drpcount);
+			List<WebElement> TextAreaelement = checkoutstep1.findElements(By.tagName("textarea"));
+			int TextAreaCount = TextAreaelement.size();
+			logg.info("Total textarea appears for Select Payment Method is " + TextAreaCount);
+
+			if (TextBoxcount > 0) {
+				for (int i = 1; i <= TextBoxcount; i++) {
 					driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]"))
 							.sendKeys(String.valueOf(Randomvalue));
 					TimeUnit.SECONDS.sleep(3);
-					// logg.info("Total textbox appears for Select Payment Method is " + count);
 				}
 			}
 
@@ -180,6 +181,15 @@ public class POMOrderCheckOutPage {
 					driver.findElement(
 							By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + d + "]//option[1]"))
 							.click();
+				}
+			}
+
+			if (TextAreaCount > 0) {
+				for (int n = 1; n <= TextAreaCount; n++) {
+					driver.findElement(By.xpath("(//div[@class='step-subsection ccf-box']//textarea)[" + n + "]"))
+							.sendKeys("TextArea " + n);
+					logg.info("Value enters in textarea " + n);
+					TimeUnit.SECONDS.sleep(1);
 				}
 			}
 

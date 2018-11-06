@@ -93,6 +93,9 @@ public class POMQuotesCheckout {
 			TimeUnit.SECONDS.sleep(3);
 			int CountDropdown = ListDrpFields.size();
 			logg.info("The count is " + CountDropdown);
+			List<WebElement> ListTextAreaFields = FieldsStep1.findElements(By.tagName("textarea"));
+			TimeUnit.SECONDS.sleep(3);
+			int CountTextArea = ListTextAreaFields.size();
 
 			if (CountTextBox > 0) {
 				for (int i = 1; i <= CountTextBox; i++) {
@@ -116,6 +119,15 @@ public class POMQuotesCheckout {
 					logg.info("Value selected for Dropdown " + j);
 					TimeUnit.SECONDS.sleep(1);
 
+				}
+			}
+			
+			if (CountTextArea > 0) {
+				for (int n = 1; n <= CountTextArea; n++) {
+					driver.findElement(By.xpath("(//div[@class='step-subsection ccf-box']//textarea)[" + n + "]"))
+							.sendKeys("TextArea " +n);
+					logg.info("Value enters in textarea " + n);
+					TimeUnit.SECONDS.sleep(1);
 				}
 			}
 
