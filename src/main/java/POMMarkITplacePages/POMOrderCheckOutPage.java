@@ -239,7 +239,7 @@ public class POMOrderCheckOutPage {
 					logg.info("Total count of custom dropdown is " + TotalDropdownCount);
 					List<WebElement> CustomTextArea = CustomFields.findElements(By.tagName("textarea"));
 					int TotalTextAreaCount = CustomTextArea.size();
-					logg.info("Total count of custom dropdown is " + TotalTextAreaCount);
+					logg.info("Total count of custom TextArea is " + TotalTextAreaCount);
 
 					// System.out.println(TotalCount);
 
