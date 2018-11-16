@@ -42,8 +42,8 @@ public class MainTestCaseFile extends MainDriverClass {
 	// Just to check for push..
 
 	public static WebDriver maindriver;
-	String Login_UserName = "arpatech1@connection.com";
-	String Login_Password = "Arp@tech5";
+	String Login_UserName = "gcarrasco@netflix.com";
+	String Login_Password = "Arp@tech1";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
 
 	@BeforeTest
