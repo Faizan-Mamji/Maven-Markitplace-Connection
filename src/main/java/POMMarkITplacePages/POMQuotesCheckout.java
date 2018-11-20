@@ -47,7 +47,8 @@ public class POMQuotesCheckout {
 	By SaveBtn = By.xpath("//a[contains(text(),'Save & Continue')]");
 	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
-	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
+	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div)[1]");
+	By CustomLabelMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
 	By TotalLineItems = By.xpath("//form[@id='standardLineFields']");
 	By Attention = By.xpath("(//input[@type='text'])[1]");
 	By SendEmailConfirmation = By.id("tbEmailConfirmation");
@@ -121,11 +122,11 @@ public class POMQuotesCheckout {
 
 				}
 			}
-			
+
 			if (CountTextArea > 0) {
 				for (int n = 1; n <= CountTextArea; n++) {
 					driver.findElement(By.xpath("(//div[@class='step-subsection ccf-box']//textarea)[" + n + "]"))
-							.sendKeys("TextArea " +n);
+							.sendKeys("TextArea " + n);
 					logg.info("Value enters in textarea " + n);
 					TimeUnit.SECONDS.sleep(1);
 				}
@@ -167,43 +168,49 @@ public class POMQuotesCheckout {
 			int countProductsLineItems = ProductsLineItems.size();
 
 			if (countProductsLineItems > 0) {
-				String GetCustomText = driver.findElement(CustomMessage).getText();
-				logg.info("Get some label text i.e " + GetCustomText);
-				
-				if (GetCustomText != "") {
-				
-					WebElement CustomBox = driver.findElement(By.xpath("//form[@id='standardLineFields']"));
-					List<WebElement> Customdropdown = CustomBox.findElements(By.tagName("select"));
-					int CountCustomDropdown = Customdropdown.size();
-					logg.info("Total count of custom dropdown is " + CountCustomDropdown);
-					List<WebElement> CustomTextarea = CustomBox.findElements(By.tagName("textarea"));
-					int CountCustomTextarea = CustomTextarea.size();
-					logg.info("Total count of custom textarea is " + CountCustomTextarea);
+				WebElement CheckLabelAttribute = driver.findElement(CustomMessage);
+				List<WebElement> CountLabel = CheckLabelAttribute.findElements(By.tagName("label"));
+				int counttest = CountLabel.size();
 
-					if (CountCustomDropdown > 0) {
-						for (int q = 1; q <= CountCustomDropdown; q++) {
-							driver.findElement(
-									By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + q + "]"))
-									.click();
-							logg.info("Custom Dropdown opens");
-							driver.findElement(By.xpath(
-									"(//select[@class='native-drop native-drop-checkout'])[" + q + "]//option[1]"))
-									.click();
-							logg.info("Custom Dropdown value selected " + q);
+				if (counttest > 0) {
+					
+					String GetCustomText = driver.findElement(CustomLabelMessage).getText();
 
+
+					if (GetCustomText != "") {
+
+						WebElement CustomBox = driver.findElement(By.xpath("//form[@id='standardLineFields']"));
+						List<WebElement> Customdropdown = CustomBox.findElements(By.tagName("select"));
+						int CountCustomDropdown = Customdropdown.size();
+						logg.info("Total count of custom dropdown is " + CountCustomDropdown);
+						List<WebElement> CustomTextarea = CustomBox.findElements(By.tagName("textarea"));
+						int CountCustomTextarea = CustomTextarea.size();
+						logg.info("Total count of custom textarea is " + CountCustomTextarea);
+
+						if (CountCustomDropdown > 0) {
+							for (int q = 1; q <= CountCustomDropdown; q++) {
+								driver.findElement(
+										By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + q + "]"))
+										.click();
+								logg.info("Custom Dropdown opens");
+								driver.findElement(By.xpath(
+										"(//select[@class='native-drop native-drop-checkout'])[" + q + "]//option[1]"))
+										.click();
+								logg.info("Custom Dropdown value selected " + q);
+
+							}
 						}
-					}
 
-					if (CountCustomTextarea > 0) {
-						for (int m = 1; m <= CountCustomTextarea; m++) {
-							driver.findElement(
-									By.xpath("(//div[@class='custom-field-container']//textarea)[" + m + "]"))
-									.sendKeys("TextArea " + m);
-							logg.info("Custom text enters in TextArea " +m);
+						if (CountCustomTextarea > 0) {
+							for (int m = 1; m <= CountCustomTextarea; m++) {
+								driver.findElement(
+										By.xpath("(//div[@class='custom-field-container']//textarea)[" + m + "]"))
+										.sendKeys("TextArea " + m);
+								logg.info("Custom text enters in TextArea " + m);
+							}
 						}
 					}
 				}
-				
 				driver.findElement(SaveBtn).click();
 				TimeUnit.SECONDS.sleep(4);
 				logg.info("Save & Continue Button Click successfully");

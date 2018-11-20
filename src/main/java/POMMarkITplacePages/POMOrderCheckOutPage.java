@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.xpath.operations.Bool;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,8 +49,10 @@ public class POMOrderCheckOutPage {
 	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
 	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
 	By TotalLItem = By.xpath("//form[@id='standardLineFields']");
-	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
+	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div)[1]");
 	By CustomBox = By.xpath("//form[@id='standardLineFields']");
+	By CustomLabelMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
+	
 
 	// POM Of Step 3 (Notes for Recipient and Confirmations)
 
@@ -66,83 +69,6 @@ public class POMOrderCheckOutPage {
 	By ErrorCloseBtn = By.xpath("//button[@class='btn btn-default']");
 	By ClickLogoImage = By.xpath("//img[@class='logo']");
 
-	/*
-	 * public void CompleteCheckout_Process() throws InterruptedException {
-	 * SoftAssert sf =new SoftAssert(); try { // Step 1 of Checkout process
-	 * logg.info("CheckOut TestCase Starts Here");
-	 * driver.findElement(POTextBox).sendKeys(String.valueOf(PO));
-	 * TimeUnit.MILLISECONDS.sleep(1000);
-	 * logg.info("PO number enters successfully");
-	 * //driver.findElement(ReferenceTextBox).sendKeys("Test");
-	 * //TimeUnit.MILLISECONDS.sleep(1000);
-	 * //logg.info("Reference text enters successfully");
-	 * driver.findElement(ProjectTextBox).sendKeys("Test");
-	 * TimeUnit.MILLISECONDS.sleep(1000);
-	 * logg.info("Project text enters successfully");
-	 * driver.findElement(CostCenterTextBox).sendKeys("Test");
-	 * TimeUnit.MILLISECONDS.sleep(1000);
-	 * logg.info("CostCenter text enters successfully"); String BillingAddressText =
-	 * driver.findElement(CheckBillingAddress).getText();
-	 * 
-	 * if (BillingAddressText.contains(CheckBillingAddressText)) {
-	 * driver.findElement(OpenBillingAddressDropdown).click();
-	 * logg.info("Select Billing address dropdown opens successfully");
-	 * driver.findElement(SelectBillingAddressValue).click();
-	 * logg.info("Billing address dropdown value selected successfully");
-	 * driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
-	 * logg.info("Save & Continue Button Click successfully"); } else {
-	 * driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
-	 * logg.info("Save & Continue Button Click successfully"); } // Step 2 of
-	 * Checkout process logg.info("Now selection of address on checkout page");
-	 * driver.findElement(SelectAddress).click(); TimeUnit.MILLISECONDS.sleep(2000);
-	 * logg.info("Address selects successfully");
-	 * driver.findElement(UseThisAddressBtn).click();
-	 * TimeUnit.MILLISECONDS.sleep(3000);
-	 * logg.info("Use this button click successfully");
-	 * driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
-	 * logg.info("Save & Continue Button Click successfully");
-	 * 
-	 * // Step 3 of Checkout process
-	 * driver.findElement(SendEmailConfirmation).clear();
-	 * TimeUnit.MILLISECONDS.sleep(2000);
-	 * driver.findElement(SendEmailConfirmation).sendKeys(
-	 * "faizan.mamji@arpatech.com"); TimeUnit.MILLISECONDS.sleep(2000);
-	 * logg.info("Email entered successfully in textbox");
-	 * driver.findElement(SaveBtn).click(); TimeUnit.MILLISECONDS.sleep(4000);
-	 * logg.info("Save & Continue Button Click successfully");
-	 * 
-	 * // Step 4 of Checkout process driver.findElement(PlaceOrderBtn).click();
-	 * TimeUnit.MILLISECONDS.sleep(50000);
-	 * logg.info("Place Holder Button Click successfully!");
-	 * 
-	 * String TitleVerification = driver.getTitle();
-	 * if(TitleVerification.equalsIgnoreCase(OrderConfirmationTitle)) {
-	 * sf.assertEquals(TitleVerification, OrderConfirmationTitle);
-	 * logg.info("Order Confirmation Page assertion verified successfully!");
-	 * logg.info("Order Confirmation Page Opens successfully!"); logg.
-	 * info("*********************** Checkout TestCase Passed ***********************"
-	 * );
-	 * 
-	 * }
-	 * 
-	 * else { String errormessage = driver.findElement(ErrorOopsBox).getText(); if
-	 * (errormessage.equalsIgnoreCase(CheckOutErrorMessage)) {
-	 * driver.findElement(ErrorCloseBtn).click(); TimeUnit.MILLISECONDS.sleep(2000);
-	 * logg.info("Oops box close on checkout page!");
-	 * driver.findElement(ClickLogoImage).click();
-	 * logg.info("Navigate to Home page!"); logg.
-	 * info("*********************** Checkout Not Done Due To Api Issue As It Opens Oops Modal ***********************"
-	 * ); }
-	 * 
-	 * } }
-	 * 
-	 * catch (Exception ex) { logg.info(
-	 * "POMCheckOutPage - Exception!!! - There is some issue while doing checkout or may be it shouldn't navigate to order confirmation page "
-	 * + ex.getMessage());
-	 * 
-	 * Assert.fail("Failed in class - POMCheckOutPage"); } }
-	 */
-
 	public void CompleteCheckout_Process() {
 		Random rnd = new Random();
 		int Randomvalue = rnd.nextInt(986522) + 3;
@@ -151,7 +77,7 @@ public class POMOrderCheckOutPage {
 
 		try {
 			// Start Checkout Step 1
-			// driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
+			//driver.navigate().to("http://markitplace-qa.arpatech.com/shop/cart/checkout");
 			logg.info("CheckOut TestCase Starts Here");
 			WebElement checkoutstep1 = driver.findElement(SelectPaymentBox);
 			List<WebElement> textboxelem = checkoutstep1.findElements(By.tagName("input"));
@@ -229,40 +155,47 @@ public class POMOrderCheckOutPage {
 			int CountTotalLineItems = TotalLineItems.size();
 
 			if (CountTotalLineItems > 0) {
-				String GetCustomText = driver.findElement(CustomMessage).getText();
-				logg.info("Get some label text i.e " + GetCustomText);
+				WebElement CheckLabelAttribute = driver.findElement(CustomMessage);
+				List<WebElement> CountLabel = CheckLabelAttribute.findElements(By.tagName("label"));
+				int counttest = CountLabel.size();
 
-				if (GetCustomText != "") {
-					WebElement CustomFields = driver.findElement(CustomBox);
-					List<WebElement> CustomDropdown = CustomFields.findElements(By.tagName("select"));
-					int TotalDropdownCount = CustomDropdown.size();
-					logg.info("Total count of custom dropdown is " + TotalDropdownCount);
-					List<WebElement> CustomTextArea = CustomFields.findElements(By.tagName("textarea"));
-					int TotalTextAreaCount = CustomTextArea.size();
-					logg.info("Total count of custom TextArea is " + TotalTextAreaCount);
+				if (counttest > 0) {
+					// logg.info("Get some label text i.e " + GetCustomText);
 
-					// System.out.println(TotalCount);
+					String GetCustomText = driver.findElement(CustomLabelMessage).getText();
 
-					if (TotalDropdownCount > 0) {
-						for (int j = 1; j <= TotalDropdownCount; j++) {
-							driver.findElement(
-									By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + j + "]"))
-									.click();
-							logg.info("Custom Dropdown opens");
-							driver.findElement(By.xpath(
-									"(//select[@class='native-drop native-drop-checkout'])[" + j + "]//option[1]"))
-									.click();
-							logg.info("Custom Dropdown value selected " + j);
+					if (GetCustomText != "") {
+						WebElement CustomFields = driver.findElement(CustomBox);
+						List<WebElement> CustomDropdown = CustomFields.findElements(By.tagName("select"));
+						int TotalDropdownCount = CustomDropdown.size();
+						logg.info("Total count of custom dropdown is " + TotalDropdownCount);
+						List<WebElement> CustomTextArea = CustomFields.findElements(By.tagName("textarea"));
+						int TotalTextAreaCount = CustomTextArea.size();
+						logg.info("Total count of custom TextArea is " + TotalTextAreaCount);
 
+						// System.out.println(TotalCount);
+
+						if (TotalDropdownCount > 0) {
+							for (int j = 1; j <= TotalDropdownCount; j++) {
+								driver.findElement(
+										By.xpath("(//select[@class='native-drop native-drop-checkout'])[" + j + "]"))
+										.click();
+								logg.info("Custom Dropdown opens");
+								driver.findElement(By.xpath(
+										"(//select[@class='native-drop native-drop-checkout'])[" + j + "]//option[1]"))
+										.click();
+								logg.info("Custom Dropdown value selected " + j);
+
+							}
 						}
-					}
 
-					if (TotalTextAreaCount > 0) {
-						for (int k = 1; k <= TotalTextAreaCount; k++) {
-							driver.findElement(
-									By.xpath("(//div[@class='custom-field-container']//textarea)[" + k + "]"))
-									.sendKeys("TextArea " + k);
-							logg.info("Custom text enters in TextArea " + k);
+						if (TotalTextAreaCount > 0) {
+							for (int k = 1; k <= TotalTextAreaCount; k++) {
+								driver.findElement(
+										By.xpath("(//div[@class='custom-field-container']//textarea)[" + k + "]"))
+										.sendKeys("TextArea " + k);
+								logg.info("Custom text enters in TextArea " + k);
+							}
 						}
 					}
 				}
