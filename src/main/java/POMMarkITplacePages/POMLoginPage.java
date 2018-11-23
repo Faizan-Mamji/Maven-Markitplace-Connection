@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import DriverMainPackage.MainDriverClass;
@@ -39,7 +40,6 @@ public class POMLoginPage {
 	String QuotesListingPageTitle = "Quotes - MarkITplace";
 	String PurchaseAnalysisPageTitle = "Purchase Analysis - MarkITplace";
 	String SavedReportPageTitle = "Saved Reports - MarkITplace";
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -49,9 +49,23 @@ public class POMLoginPage {
 		POMLoginPage.driver = driver;
 	}
 
-	By login_email = By.name("username");
-	By login_password = By.name("password");
-	By submit_login = By.xpath("//input[@type='submit']");
+	public WebElement txt_Login() {
+
+		By login_email = By.name("username");
+		return driver.findElement(login_email);
+	}
+
+	public WebElement txt_Password() {
+
+		By login_password = By.name("password");
+		return driver.findElement(login_password);
+	}
+	
+	public WebElement txt_SubmitBtn() {
+
+		By submit_login = By.xpath("//input[@type='submit']");
+		return driver.findElement(submit_login);
+	}
 
 	public void loginpage_function(String loginuname, String loginpassword) {
 		MainDriverClass objdriver = new MainDriverClass();
@@ -59,11 +73,11 @@ public class POMLoginPage {
 		try {
 			UrlValReturn = objdriver.getConfigValue("MainUrl");
 			logg.info("Get the Value of UrlValReturn = " + UrlValReturn);
-			driver.findElement(login_email).sendKeys(loginuname);
+			txt_Login().sendKeys(loginuname);
 			logg.info("UserEmail enters in email textbox");
-			driver.findElement(login_password).sendKeys(loginpassword);
+			txt_Password().sendKeys(loginpassword);
 			logg.info("UserPassword enters in password textbox");
-			driver.findElement(submit_login).click();
+			txt_SubmitBtn().click();
 			logg.info("Submit button click successfully and navigate to default landing page");
 			String pagetext = driver.getTitle();
 
@@ -181,57 +195,55 @@ public class POMLoginPage {
 				logg.info("Shipments Report Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(ReceivingLogPageTitle))
 
 			{
 				logg.info("Receiving Log Report Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(QuotesPageTitle))
 
 			{
 				logg.info("Quotes Report Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(OrderLinePageTitle))
 
 			{
 				logg.info("Order Line Report Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(OrdersListingPageTitle))
 
 			{
 				logg.info("Order Listing Page Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(QuotesListingPageTitle))
 
 			{
 				logg.info("Quotes Listing Page Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(PurchaseAnalysisPageTitle))
 
 			{
 				logg.info("PA Listing Page Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
+
 			else if (pagetext.equalsIgnoreCase(SavedReportPageTitle))
 
 			{
 				logg.info("Saved Report Opens after login to the application");
 				logg.info("*********************** Login TestCase Passed ***********************");
 			}
-			
-			
 
 			else {
 				logg.info("Some other/irrelevant page found during login the application");
