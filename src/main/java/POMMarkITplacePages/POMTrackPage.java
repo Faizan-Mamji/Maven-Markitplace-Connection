@@ -28,7 +28,7 @@ public class POMTrackPage {
 	By TrackNavClick = By.xpath("(//div[@class='homepage-nav-item-container']//a)[2]");
 	By BtnBuyItemsAgain = By.xpath("(//div[@class='accordion-content clearfix active']//a)[2]");
 	By QuickFinderSearch = By.xpath("//input[@class='quick-search']");
-	By CloseBtnAddToCart = By.xpath("(//div[@class='modal-content']//button[@title='Close (Esc)'])[5]");
+	By CloseBtnAddToCart = By.xpath("(//div[@class='modal-content']//button[@title='Close (Esc)'])[6]");
 
 	public void TrackPageFunction_BuyItemsAgain() {
 		SoftAssert sf =new SoftAssert();
