@@ -1,14 +1,12 @@
 package POMMarkITplacePages;
 
 import org.apache.logging.log4j.Logger;
-
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
+
+import POMMain.AllPOMS;
 
 public class POMStandardDetail {
 
@@ -25,10 +23,6 @@ public class POMStandardDetail {
 		POMStandardDetail.driver = driver;
 	}
 
-	// Declare SDP POM
-
-	By StandardViewAllLinkClick = By.xpath("(//a[contains(text(),'View all')])[1]");
-
 	public void Navigate_SDP_From_StandardListing() {
 
 		// PropertyConfigurator.configure("log4j.properties");
@@ -43,11 +37,9 @@ public class POMStandardDetail {
 			}
 
 			else {
-				driver.findElement(StandardViewAllLinkClick).click();
+				AllPOMS.StandardDet_StandardViewAllLinkClick().click();
 				TimeUnit.MILLISECONDS.sleep(15000);
 				logg.info("Standard Detail Page Opens Successfully");
-				// assertEquals(driver.getTitle(), StandardDetailTitle);
-				//logg.info("Standard Detail Page Assertion Passed Successfully");
 				logg.info("*********************** SDP TestCase Passed ***********************");
 			}
 		}

@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMProductDetail {
 	
 	public static WebDriver driver;
@@ -29,11 +31,6 @@ public class POMProductDetail {
 	
 	//Declare PDP POM of search listing for redirect to PDP 
 	
-	By productimageclick = By.xpath("(//div[@class='product-list-grid clearfix print-product-list grid']//a[@class='image-link'])[1]");
-	By EmailIconClick= By.xpath("(//span[@class='product-list-actions']/a)[1]");
-	By EmailAddress = By.id("email_addresses");
-	By EmailSendBtn= By.xpath("//button[@class='btn btn-primary']");
-	
 	public void Navigate_PDP_Page_From_SearchListing() throws InterruptedException 
 	{
 		SoftAssert sf =new SoftAssert();
@@ -42,7 +39,7 @@ public class POMProductDetail {
 		{
 			TimeUnit.MILLISECONDS.sleep(2000);
 			logg.info("PDP TestCase starts here");
-			driver.findElement(productimageclick).click();
+			AllPOMS.SL_ProductImage().click();
 			TimeUnit.MILLISECONDS.sleep(12000);
 			logg.info("Click on product and navigate to PDP");
 			sf.assertEquals(PDPTitle, driver.getTitle());
@@ -65,13 +62,13 @@ public class POMProductDetail {
 		{
 			TimeUnit.MILLISECONDS.sleep(2000);
 			logg.info("PDP Email TestCase starts here");
-			driver.findElement(EmailIconClick).click();
+			AllPOMS.PDP_EmailIcon().click();
 			TimeUnit.MILLISECONDS.sleep(5000);
 			logg.info("Email POP Up Opens Successfully");
-			driver.findElement(EmailAddress).sendKeys("faizan.mamji@arpatech.com");
+			AllPOMS.PDP_EmailAddress().sendKeys("faizan.mamji@arpatech.com");
 			TimeUnit.MILLISECONDS.sleep(3000);
 			logg.info("Email enters in textbox Successfully");
-			driver.findElement(EmailSendBtn).click();
+			AllPOMS.PDP_EmailSendBtn().click();
 			logg.info("Email Send Button click successfully");
 			TimeUnit.MILLISECONDS.sleep(50000);
 			logg.info("*********************** PDP Email TestCase Passed ***********************");

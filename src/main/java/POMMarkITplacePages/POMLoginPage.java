@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import DriverMainPackage.MainDriverClass;
+import POMMain.AllPOMS;
 
 //import DriverMainPackage.MainDriverClass;
 
@@ -49,35 +50,18 @@ public class POMLoginPage {
 		POMLoginPage.driver = driver;
 	}
 
-	public WebElement txt_Login() {
-
-		By login_email = By.name("username");
-		return driver.findElement(login_email);
-	}
-
-	public WebElement txt_Password() {
-
-		By login_password = By.name("password");
-		return driver.findElement(login_password);
-	}
 	
-	public WebElement txt_SubmitBtn() {
-
-		By submit_login = By.xpath("//input[@type='submit']");
-		return driver.findElement(submit_login);
-	}
-
 	public void loginpage_function(String loginuname, String loginpassword) {
 		MainDriverClass objdriver = new MainDriverClass();
-
+		
 		try {
 			UrlValReturn = objdriver.getConfigValue("MainUrl");
 			logg.info("Get the Value of UrlValReturn = " + UrlValReturn);
-			txt_Login().sendKeys(loginuname);
+			AllPOMS.txt_Login().sendKeys(loginuname);
 			logg.info("UserEmail enters in email textbox");
-			txt_Password().sendKeys(loginpassword);
+			AllPOMS.txt_Password().sendKeys(loginpassword);
 			logg.info("UserPassword enters in password textbox");
-			txt_SubmitBtn().click();
+			AllPOMS.txt_SubmitBtn().click();
 			logg.info("Submit button click successfully and navigate to default landing page");
 			String pagetext = driver.getTitle();
 

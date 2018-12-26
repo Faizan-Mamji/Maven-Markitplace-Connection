@@ -2,6 +2,7 @@ package TestngMethods;
 
 import org.testng.annotations.Test;
 import DriverMainPackage.MainDriverClass;
+import POMMain.AllPOMS;
 import POMMarkITplacePages.POMCalendarsPage;
 import POMMarkITplacePages.POMCartPage;
 import POMMarkITplacePages.POMOrderCheckOutPage;
@@ -45,10 +46,11 @@ public class MainTestCaseFile extends MainDriverClass {
 	String Login_UserName = "arpatech1@connection.com";
 	String Login_Password = "Arp@tech5";
 	static final Logger logg = LogManager.getLogger(MainTestCaseFile.class);
-
+	
 	@BeforeTest
 	public void beforeTest() throws IOException {
 		maindriver = genericDriver();
+		AllPOMS ObjPom=new AllPOMS(maindriver);
 	}
 
 	@Test(priority = 0)

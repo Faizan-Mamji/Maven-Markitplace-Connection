@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMCartPage {
 
 	public static WebDriver driver;
@@ -26,31 +28,28 @@ public class POMCartPage {
 		POMCartPage.driver = driver;
 	}
 
-	By CartIcon = By.xpath("//div[@class='shopping-cart']//a");
-	By CartPageQtyBox = By.xpath("(//div[@class='qty']//input)[1]");
-	By CartEditQtyUpdate = By.xpath("(//a[@class='edit-qty'])[2]");
-	By ProceedCheckout = By.xpath("(//div[@class='sticky-rightbox-fixed']//a)[1]");
+	
 
 	public void Navigate_Cart_Page_Check_Functionality() {
 		SoftAssert sf= new SoftAssert();
 		try {
 			logg.info("CartPage TestCase Starts Here");
-			driver.findElement(CartIcon).click();
+			AllPOMS.CartPage_CartIcon().click();
 			TimeUnit.MILLISECONDS.sleep(15000);
 			logg.info("CartPage Opens Successfully");
 			sf.assertEquals(driver.getTitle(),CartPageTitle);
 			logg.info("CartPage Assertion Verified");
-			driver.findElement(CartPageQtyBox).clear();
+			AllPOMS.CartPage_CartPageQtyBox().clear();
 			TimeUnit.MILLISECONDS.sleep(2000);
 			logg.info("Clear Qty Textbox Successfully");
-			driver.findElement(CartPageQtyBox).sendKeys("3");
+			AllPOMS.CartPage_CartPageQtyBox().sendKeys("3");
 			TimeUnit.MILLISECONDS.sleep(2000);
 			logg.info("Qty entered Successfully in textbox");
-			driver.findElement(CartEditQtyUpdate).click();
+			AllPOMS.CartPage_CartEditQtyUpdate().click();
 			TimeUnit.MILLISECONDS.sleep(5000);
 			logg.info("Price updated successfully against which the qty updated");
 			TimeUnit.MILLISECONDS.sleep(2000);			
-			driver.findElement(ProceedCheckout).click();
+			AllPOMS.CartPage_ProceedCheckout().click();
 			logg.info("Proceed To Checkout button click successfully");
 			TimeUnit.MILLISECONDS.sleep(10000);
 			sf.assertEquals(driver.getTitle(), CheckoutPageTitle);
