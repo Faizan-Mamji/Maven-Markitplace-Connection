@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMTrackPage {
 
 	public static WebDriver driver;
@@ -25,24 +27,20 @@ public class POMTrackPage {
 	}
 
 	// Define Track Page POM
-	By TrackNavClick = By.xpath("(//div[@class='homepage-nav-item-container']//a)[2]");
-	By BtnBuyItemsAgain = By.xpath("(//div[@class='accordion-content clearfix active']//a)[2]");
-	By QuickFinderSearch = By.xpath("//input[@class='quick-search']");
-	By CloseBtnAddToCart = By.xpath("(//div[@class='modal-content']//button[@title='Close (Esc)'])[6]");
-
+	
 	public void TrackPageFunction_BuyItemsAgain() {
 		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Track TestCase Starts Here");
-			driver.findElement(TrackNavClick).click();
+			AllPOMS.TrackDashboard_TrackNavClick().click();
 			TimeUnit.SECONDS.sleep(10);
 			logg.info("Track Dashboard opens successfully");
 			sf.assertEquals(driver.getTitle(), TrackPageTitle);
 			logg.info("Track Dashboard Assertion verified");
-			driver.findElement(BtnBuyItemsAgain).click();
+			AllPOMS.TrackDashboard_BtnBuyItemsAgain().click();
 			TimeUnit.SECONDS.sleep(30);
 			logg.info("Buy items button click successfully");
-			driver.findElement(CloseBtnAddToCart).click();
+			AllPOMS.TrackDashboard_CloseBtnAddToCart().click();
 			logg.info("Add To Cart Modal Close successfully");
 			TimeUnit.SECONDS.sleep(5);
 			logg.info("*********************** Track Page TestCase Passed ***********************");
@@ -59,9 +57,9 @@ public class POMTrackPage {
 		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("QuickSearch Function Starts Here");
-			driver.findElement(QuickFinderSearch).sendKeys("11");
+			AllPOMS.TrackDashboard_QuickFinderSearch().sendKeys("11");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(QuickFinderSearch).sendKeys(Keys.ENTER);
+			AllPOMS.TrackDashboard_QuickFinderSearch().sendKeys(Keys.ENTER);
 			TimeUnit.SECONDS.sleep(50);
 			sf.assertEquals(driver.getTitle(), TrackSearchResultPageTitle);
 			logg.info("Track Search Result Page Assertion verified");

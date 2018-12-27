@@ -330,7 +330,7 @@ public class AllPOMS {
 	}
 
 	public static WebElement OrderCheckout_PlaceOrderBtn() {
-		
+
 		By PlaceOrderBtn = By.xpath("(//a[contains(text(),'Place Order')])[1]");
 		return driver.findElement(PlaceOrderBtn);
 	}
@@ -340,23 +340,506 @@ public class AllPOMS {
 		By ErrorOopsBox = By.xpath("//div[@class='modal-dialog']//span");
 		return driver.findElement(ErrorOopsBox);
 	}
-	
+
 	public static WebElement OrderCheckout_ErrorCloseBtn() {
-		
+
 		By ErrorCloseBtn = By.xpath("//button[@class='btn btn-default']");
 		return driver.findElement(ErrorCloseBtn);
 	}
-	
+
 	public static WebElement OrderCheckout_ClickLogoImage() {
 
 		By ClickLogoImage = By.xpath("//img[@class='logo']");
 		return driver.findElement(ClickLogoImage);
 	}
 
-	
+	// Quote Checkout POM
 
-	
-	
-	
+	public static WebElement QuotesCheckout_FavSelectAll() {
 
+		By FavSelectAll = By.xpath("//div[@class='left']//div[@class='select-all-col']");
+		return driver.findElement(FavSelectAll);
+	}
+
+	public static WebElement QuotesCheckout_BtnAddSelectedToCart() {
+
+		By BtnAddSelectedToCart = By.xpath("(//div[@class='left']//a)[1]");
+		return driver.findElement(BtnAddSelectedToCart);
+	}
+
+	public static WebElement QuotesCheckout_ModalBtnCreateQuote() {
+
+		By ModalBtnCreateQuote = By
+				.xpath("(//div[@class='modal-content']//div[@class='pull-left cart-modal-btns']//a)[1]");
+		return driver.findElement(ModalBtnCreateQuote);
+	}
+
+	public static WebElement QuotesCheckout_SelectPaymentMethod() {
+
+		By SelectPaymentMethod = By.xpath("//div[@class='step-subsection ccf-box']//div[@class='row']");
+		return driver.findElement(SelectPaymentMethod);
+	}
+
+	public static WebElement QuotesCheckout_SelectBillingAddress() {
+
+		By SelectBillingAddress = By.xpath("//div[@class='step-subsection last']");
+		return driver.findElement(SelectBillingAddress);
+	}
+
+	public static WebElement QuotesCheckout_SelectBillingArrow() {
+
+		By SelectBillingArrow = By.xpath("//div[@class='predictive-dropdown-arrow']");
+		return driver.findElement(SelectBillingArrow);
+	}
+
+	public static WebElement QuotesCheckout_SelectBillingDrpSelected() {
+
+		By SelectBillingDrpSelected = By.xpath("(//div[@class='predictive-quickfind-container']//ul//li)[1]");
+		return driver.findElement(SelectBillingDrpSelected);
+	}
+
+	public static WebElement QuotesCheckout_SaveBtn() {
+
+		By SaveBtn = By.xpath("//a[contains(text(),'Save & Continue')]");
+		return driver.findElement(SaveBtn);
+	}
+
+	public static WebElement QuotesCheckout_SelectAddress() {
+
+		By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
+		return driver.findElement(SelectAddress);
+	}
+
+	public static WebElement QuotesCheckout_UseThisAddressBtn() {
+
+		By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
+		return driver.findElement(UseThisAddressBtn);
+	}
+
+	public static WebElement QuotesCheckout_CustomMessage() {
+
+		By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div)[1]");
+		return driver.findElement(CustomMessage);
+	}
+
+	public static WebElement QuotesCheckout_CustomLabelMessage() {
+
+		By CustomLabelMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
+		return driver.findElement(CustomLabelMessage);
+	}
+
+	public static WebElement QuotesCheckout_TotalLineItems() {
+
+		By TotalLineItems = By.xpath("//form[@id='standardLineFields']");
+		return driver.findElement(TotalLineItems);
+	}
+
+	public static WebElement QuotesCheckout_Attention() {
+
+		By Attention = By.xpath("(//input[@type='text'])[1]");
+		return driver.findElement(Attention);
+	}
+
+	public static WebElement QuotesCheckout_SendEmailConfirmation() {
+
+		By SendEmailConfirmation = By.id("tbEmailConfirmation");
+		return driver.findElement(SendEmailConfirmation);
+	}
+
+	public static WebElement QuotesCheckout_CreateQuoteBtn() {
+
+		By CreateQuoteBtn = By.xpath("(//a[contains(text(),'Create Quote')])[1]");
+		return driver.findElement(CreateQuoteBtn);
+	}
+
+	public static WebElement QuotesCheckout_ErrorOopsBox() {
+
+		By ErrorOopsBox = By.xpath("//div[@class='modal-dialog']//span");
+		return driver.findElement(ErrorOopsBox);
+	}
+
+	public static WebElement QuotesCheckout_ErrorCloseBtn() {
+
+		By ErrorCloseBtn = By.xpath("//button[@class='btn btn-default']");
+		return driver.findElement(ErrorCloseBtn);
+	}
+
+	public static WebElement QuotesCheckout_ClickLogoImage() {
+
+		By ClickLogoImage = By.xpath("//img[@class='logo']");
+		return driver.findElement(ClickLogoImage);
+	}
+
+	public static WebElement QuotesCheckout_CustomTextBoxes() {
+
+		By CustomTextBoxes = By.xpath("//form[@id='standardLineFields']");
+		return driver.findElement(CustomTextBoxes);
+	}
+
+	// Track Dashboard Page POM
+
+	public static WebElement TrackDashboard_TrackNavClick() {
+
+		By TrackNavClick = By.xpath("(//div[@class='homepage-nav-item-container']//a)[2]");
+		return driver.findElement(TrackNavClick);
+	}
+
+	public static WebElement TrackDashboard_BtnBuyItemsAgain() {
+
+		By BtnBuyItemsAgain = By.xpath("(//div[@class='accordion-content clearfix active']//a)[2]");
+		return driver.findElement(BtnBuyItemsAgain);
+	}
+
+	public static WebElement TrackDashboard_QuickFinderSearch() {
+
+		By QuickFinderSearch = By.xpath("//input[@class='quick-search']");
+		return driver.findElement(QuickFinderSearch);
+	}
+
+	public static WebElement TrackDashboard_CloseBtnAddToCart() {
+
+		By CloseBtnAddToCart = By.xpath("(//div[@class='modal-content']//button[@title='Close (Esc)'])[6]");
+		return driver.findElement(CloseBtnAddToCart);
+	}
+
+	// Track Search Result Page POM
+
+	public static WebElement TrackSearch_LoadMoreBtn() {
+
+		By LoadMoreBtn = By.xpath("//div[@class='row order-footer-controls']//button");
+		return driver.findElement(LoadMoreBtn);
+	}
+
+	public static WebElement TrackSearch_BtnQuotes() {
+
+		By BtnQuotes = By.xpath("(//Section[@id='order-top']//span)[2]");
+		return driver.findElement(BtnQuotes);
+	}
+
+	public static WebElement TrackSearch_BtnAssets() {
+
+		By BtnAssets = By.xpath("(//Section[@id='order-top']//span)[3]");
+		return driver.findElement(BtnAssets);
+	}
+
+	public static WebElement TrackSearch_BtnShipments() {
+
+		By BtnShipments = By.xpath("(//Section[@id='order-top']//span)[4]");
+		return driver.findElement(BtnShipments);
+	}
+
+	public static WebElement TrackSearch_CheckTotalCount() {
+
+		By CheckTotalCount = By.xpath("//div[@class='search-matching-container']//p");
+		return driver.findElement(CheckTotalCount);
+	}
+
+	// Calendars Page POM
+
+	public static WebElement Calendars_CalendarDetailView() {
+
+		By CalendarDetailView = By.xpath("//span[contains(text(),'Detail view')]");
+		return driver.findElement(CalendarDetailView);
+	}
+
+	public static WebElement Calendars_CalendarNavClick() {
+
+		By CalendarNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[1]");
+		return driver.findElement(CalendarNavClick);
+	}
+
+	// Purchase Analysis Page POM
+
+	public static WebElement Purchase_purchasenavclick() {
+
+		By purchasenavclick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[5]");
+		return driver.findElement(purchasenavclick);
+	}
+
+	public static WebElement Purchase_EmailIconClick() {
+
+		By EmailIconClick = By.xpath("(//span[@class='product-list-actions']/a)[2]");
+		return driver.findElement(EmailIconClick);
+	}
+
+	public static WebElement Purchase_EmailAddress() {
+
+		By EmailAddress = By.id("email_addresses");
+		return driver.findElement(EmailAddress);
+	}
+
+	public static WebElement Purchase_EmailSendBtn() {
+
+		By EmailSendBtn = By.xpath("//button[@class='btn btn-primary']");
+		return driver.findElement(EmailSendBtn);
+	}
+
+	// Saved Report Page POM
+
+	public static WebElement SavedReport_LinkSavedReport() {
+
+		By LinkSavedReport = By.linkText("Saved Reports");
+		return driver.findElement(LinkSavedReport);
+	}
+
+	public static WebElement SavedReport_ScheduleModal() {
+
+		By ScheduleModal = By.xpath("(//a[@class='saved-calendar'])[1]");
+		return driver.findElement(ScheduleModal);
+	}
+
+	public static WebElement SavedReport_ScheduleEmailAddress() {
+
+		By ScheduleEmailAddress = By.xpath("(//input[@name='email'])[1]");
+		return driver.findElement(ScheduleEmailAddress);
+	}
+
+	public static WebElement SavedReport_BtnScheduleReport() {
+
+		By BtnScheduleReport = By.xpath("(//button[@class='btn btn-primary'])[1]");
+		return driver.findElement(BtnScheduleReport);
+	}
+
+	// Order Listing Page POM
+
+	public static WebElement Orders_OrdersNavClick() {
+
+		By OrdersNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[3]");
+		return driver.findElement(OrdersNavClick);
+	}
+
+	public static WebElement Orders_BtnLoadMore() {
+
+		By BtnLoadMore = By.id("load-more-link");
+		return driver.findElement(BtnLoadMore);
+	}
+
+	public static WebElement Orders_OrderBuyItemAgain() {
+
+		By OrderBuyItemAgain = By.xpath("(//div[@class='action-area clearfix']//a)[1]");
+		return driver.findElement(OrderBuyItemAgain);
+	}
+
+	public static WebElement Orders_CartModalClose() {
+
+		By CartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[1]");
+		return driver.findElement(CartModalClose);
+	}
+
+	public static WebElement Orders_OrdersTimePeriod() {
+
+		By OrdersTimePeriod = By.xpath("//select[@title='Select Time Period']");
+		return driver.findElement(OrdersTimePeriod);
+	}
+
+	// Quotes Listing Page POM
+
+	public static WebElement Quotes_QuotesNavClick() {
+
+		By QuotesNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[4]");
+		return driver.findElement(QuotesNavClick);
+	}
+
+	public static WebElement Quotes_BtnLoadMore() {
+
+		By BtnLoadMore = By.id("load-more-link");
+		return driver.findElement(BtnLoadMore);
+	}
+
+	public static WebElement Quotes_QuotesTimePeriod() {
+
+		By QuotesTimePeriod = By.xpath("//select[@title='Select Time Period']");
+		return driver.findElement(QuotesTimePeriod);
+	}
+
+	// All Reports POM
+
+	public static WebElement Reports_ReportsNav() {
+
+		By ReportsNav = By.xpath("(//ul[@class='section-nav-item-container track']//a)[2]");
+		return driver.findElement(ReportsNav);
+	}
+
+	public static WebElement Reports_AssetsNavLink() {
+
+		By AssetsNavLink = By.linkText("Assets");
+		return driver.findElement(AssetsNavLink);
+	}
+
+	public static WebElement Reports_DaysShipNavLink() {
+
+		By DaysShipNavLink = By.linkText("Days to Ship");
+		return driver.findElement(DaysShipNavLink);
+	}
+
+	public static WebElement Reports_ExpirationNavLink() {
+
+		By ExpirationNavLink = By.linkText("Expiration");
+		return driver.findElement(ExpirationNavLink);
+	}
+
+	public static WebElement Reports_InventoryNavLink() {
+
+		By InventoryNavLink = By.linkText("Inventory");
+		return driver.findElement(InventoryNavLink);
+	}
+
+	public static WebElement Reports_InvoicesNavLink() {
+
+		By InvoicesNavLink = By.linkText("Invoices");
+		return driver.findElement(InvoicesNavLink);
+	}
+
+	public static WebElement Reports_InvoiceLineNavLink() {
+
+		By InvoicesNavLink = By.linkText("Invoice Line");
+		return driver.findElement(InvoicesNavLink);
+	}
+
+	public static WebElement Reports_LicensesNavLink() {
+
+		By LicensesNavLink = By.linkText("Licenses");
+		return driver.findElement(LicensesNavLink);
+	}
+
+	public static WebElement Reports_OrdersNavLink() {
+
+		By OrdersNavLink = By.xpath("(//div[@data-submenu-id='reports']//a)[8]");
+		return driver.findElement(OrdersNavLink);
+	}
+
+	public static WebElement Reports_OrderLineNavLink() {
+
+		By OrderLineNavLink = By.linkText("Order Line");
+		return driver.findElement(OrderLineNavLink);
+	}
+
+	public static WebElement Reports_QuotesNavLink() {
+
+		By QuotesNavLink = By.xpath("(//div[@data-submenu-id='reports']//a)[10]");
+		return driver.findElement(QuotesNavLink);
+	}
+
+	public static WebElement Reports_ReceivingLogNavLink() {
+
+		By ReceivingLogNavLink = By.linkText("Receiving Log");
+		return driver.findElement(ReceivingLogNavLink);
+	}
+
+	public static WebElement Reports_ShipmentsNavLink() {
+
+		By ShipmentsNavLink = By.linkText("Shipments");
+		return driver.findElement(ShipmentsNavLink);
+	}
+
+	public static WebElement Reports_StandardsNavLink() {
+
+		By StandardsNavLink = By.linkText("Standards");
+		return driver.findElement(StandardsNavLink);
+	}
+
+	public static WebElement Reports_WarrantiesNavLink() {
+
+		By WarrantiesNavLink = By.linkText("Warranties");
+		return driver.findElement(WarrantiesNavLink);
+	}
+
+	public static WebElement Reports_EmailIconClick() {
+
+		By EmailIconClick = By.xpath("(//span[@class='product-list-actions']//a)[1]");
+		return driver.findElement(EmailIconClick);
+	}
+
+	public static WebElement Reports_EmailAddress() {
+
+		By EmailAddress = By.id("email_addresses");
+		return driver.findElement(EmailAddress);
+	}
+
+	public static WebElement Reports_EmailSendBtn() {
+
+		By EmailSendBtn = By
+				.xpath("//div[@class='white-popup popup-small zoom-anim-dialog mfp-show email-modal']//button[1]");
+		return driver.findElement(EmailSendBtn);
+	}
+
+	// All Footers Page
+
+	public static WebElement Footers_HoverTopMyAccount() {
+
+		By HoverTopMyAccount = By.xpath("//a[@class='clearfix']");
+		return driver.findElement(HoverTopMyAccount);
+	}
+
+	public static WebElement Footers_MyProfile() {
+
+		By MyProfile = By.xpath("(//div[@class='account-menu']//a)[1]");
+		return driver.findElement(MyProfile);
+	}
+
+	public static WebElement Footers_ShippingAddress() {
+
+		By ShippingAddress = By.xpath("(//div[@class='account-menu']//a)[2]");
+		return driver.findElement(ShippingAddress);
+	}
+
+	public static WebElement Footers_FooterAllproducts() {
+
+		By FooterAllproducts = By.xpath("(//div[@class='footer-top-right clearfix']//a)[3]");
+		return driver.findElement(FooterAllproducts);
+	}
+
+	public static WebElement Footers_FooterResources() {
+
+		By FooterResources = By.xpath("(//div[@class='footer-top-right clearfix']//a)[4]");
+		return driver.findElement(FooterResources);
+	}
+
+	public static WebElement Footers_FooterSpecialOffers() {
+
+		By FooterSpecialOffers = By.xpath("(//div[@class='footer-top-right clearfix']//a)[5]");
+		return driver.findElement(FooterSpecialOffers);
+	}
+
+	public static WebElement Footers_FooterAboutUs() {
+
+		By FooterAboutUs = By.xpath("(//div[@class='footer-top-right clearfix']//a)[13]");
+		return driver.findElement(FooterAboutUs);
+	}
+
+	public static WebElement Footers_FooterContactUs() {
+
+		By FooterContactUs = By.xpath("(//div[@class='footer-top-right clearfix']//a)[14]");
+		return driver.findElement(FooterContactUs);
+	}
+
+	public static WebElement Footers_FooterCustomerSupport() {
+
+		By FooterCustomerSupport = By.xpath("(//div[@class='footer-top-right clearfix']//a)[15]");
+		return driver.findElement(FooterCustomerSupport);
+	}
+
+	public static WebElement Footers_FooterTermsOfSale() {
+
+		By FooterTermsOfSale = By.xpath("(//div[@class='footer-top-right clearfix']//a)[16]");
+		return driver.findElement(FooterTermsOfSale);
+	}
+
+	public static WebElement Footers_FooterPrivacyPolicy() {
+
+		By FooterPrivacyPolicy = By.xpath("(//div[@class='footer-top-right clearfix']//a)[17]");
+		return driver.findElement(FooterPrivacyPolicy);
+	}
+
+	public static WebElement Footers_FooterAccessibility() {
+
+		By FooterAccessibility = By.xpath("(//div[@class='footer-top-right clearfix']//a)[18]");
+		return driver.findElement(FooterAccessibility);
+	}
+
+	public static WebElement Footers_FooterHelp() {
+
+		By FooterHelp = By.xpath("(//div[@class='footer-top-right clearfix']//a)[19]");
+		return driver.findElement(FooterHelp);
+	}
 }

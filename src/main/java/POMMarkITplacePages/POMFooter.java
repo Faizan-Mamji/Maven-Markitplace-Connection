@@ -11,12 +11,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMFooter {
 
 	public static WebDriver driver;
 	Logger logg = LogManager.getLogger(POMFooter.class);
-	String ProfilePageTitle= "My Profile - MarkITplace";
-	String ShippingPageTitle= "Shipping Address - MarkITplace";
+	String ProfilePageTitle = "My Profile - MarkITplace";
+	String ShippingPageTitle = "Shipping Address - MarkITplace";
 	String AllProductsPageTitle = "All Products - MarkITplace";
 	String ResourcePageTitle = "Resources - MarkITplace";
 	String SpecialOfferPageTitle = "Special Offers - MarkITplace";
@@ -36,97 +38,81 @@ public class POMFooter {
 		POMFooter.driver = driver;
 	}
 
-	// Declare Footer POM
-
-	By HoverTopMyAccount = By.xpath("//a[@class='clearfix']");
-	By MyProfile = By.xpath("(//div[@class='account-menu']//a)[1]");
-	By ShippingAddress = By.xpath("(//div[@class='account-menu']//a)[2]");
-	By FooterAllproducts = By.xpath("(//div[@class='footer-top-right clearfix']//a)[3]");
-	By FooterResources = By.xpath("(//div[@class='footer-top-right clearfix']//a)[4]");
-	By FooterSpecialOffers = By.xpath("(//div[@class='footer-top-right clearfix']//a)[5]");
-	By FooterAboutUs = By.xpath("(//div[@class='footer-top-right clearfix']//a)[13]");
-	By FooterContactUs = By.xpath("(//div[@class='footer-top-right clearfix']//a)[14]");
-	By FooterCustomerSupport = By.xpath("(//div[@class='footer-top-right clearfix']//a)[15]");
-	By FooterTermsOfSale = By.xpath("(//div[@class='footer-top-right clearfix']//a)[16]");
-	By FooterPrivacyPolicy = By.xpath("(//div[@class='footer-top-right clearfix']//a)[17]");
-	By FooterAccessibility = By.xpath("(//div[@class='footer-top-right clearfix']//a)[18]");
-	By FooterHelp = By.xpath("(//div[@class='footer-top-right clearfix']//a)[19]");
-
 	public void Navigate_Footer() {
-		SoftAssert sf =new SoftAssert();
+		SoftAssert sf = new SoftAssert();
 		Actions Ac = new Actions(driver);
 		try {
 			logg.info("Footer Testcase starts here");
 			String Parent_Window = driver.getWindowHandle();
 			logg.info("Main Window stores here");
-			
-			Ac.moveToElement(driver.findElement(HoverTopMyAccount)).perform();
+
+			Ac.moveToElement(AllPOMS.Footers_HoverTopMyAccount()).perform();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("My Account hover opens");
-			driver.findElement(MyProfile).click();
+			AllPOMS.Footers_MyProfile().click();
 			TimeUnit.SECONDS.sleep(6);
 			logg.info("My Profile Page Opens Successfully");
-			sf.assertEquals(driver.getTitle(),ProfilePageTitle );
+			sf.assertEquals(driver.getTitle(), ProfilePageTitle);
 			logg.info("My Profile Assertion Verified Successfully");
-			
-			Ac.moveToElement(driver.findElement(HoverTopMyAccount)).perform();
+
+			Ac.moveToElement(AllPOMS.Footers_HoverTopMyAccount()).perform();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("My Account hover opens");
-			driver.findElement(ShippingAddress).click();
+			AllPOMS.Footers_ShippingAddress().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Shipping Address Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), ShippingPageTitle);
 			logg.info("Shipping Assertion Verified Successfully");
-			
-			driver.findElement(FooterAllproducts).click();
+
+			AllPOMS.Footers_FooterAllproducts().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("All Products Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), AllProductsPageTitle);
 			logg.info("All Products Assertion Verified Successfully");
 
-			driver.findElement(FooterResources).click();
+			AllPOMS.Footers_FooterResources().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Resource Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), ResourcePageTitle);
 			logg.info("Resource Assertion Verified Successfully");
 
-			driver.findElement(FooterSpecialOffers).click();
+			AllPOMS.Footers_FooterSpecialOffers().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("SpecialOffers Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), SpecialOfferPageTitle);
 			logg.info("Special Offers Assertion Verified Successfully");
 
-			driver.findElement(FooterAboutUs).click();
+			AllPOMS.Footers_FooterAboutUs().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("AboutUs Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), AboutUsPageTitle);
 			logg.info("AboutUs Assertion Verified Successfully");
 
-			driver.findElement(FooterContactUs).click();
+			AllPOMS.Footers_FooterContactUs().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("ContactUs Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), ContactUsPageTitle);
 			logg.info("ContactUs Assertion Verified Successfully");
 
-			driver.findElement(FooterCustomerSupport).click();
+			AllPOMS.Footers_FooterCustomerSupport().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Customer Support Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), CustomerSupportPageTitle);
 			logg.info("Customer Support Assertion Verified Successfully");
 
-			driver.findElement(FooterTermsOfSale).click();
+			AllPOMS.Footers_FooterTermsOfSale().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Terms Of Sale Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), TermsOfSalePageTitle);
 			logg.info("Terms Of Sale Assertion Verified Successfully");
 
-			driver.findElement(FooterPrivacyPolicy).click();
+			AllPOMS.Footers_FooterPrivacyPolicy().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Privacy Policy Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), PrivacyPolicyPageTitle);
 			logg.info("Privacy Policy Assertion Verified Successfully");
 
-			driver.findElement(FooterAccessibility).click();
+			AllPOMS.Footers_FooterAccessibility().click();
 			TimeUnit.SECONDS.sleep(15);
 			logg.info("Accessibility Page Opens Successfully");
 			driver.switchTo().window(Parent_Window);
@@ -146,7 +132,7 @@ public class POMFooter {
 				}
 			}
 
-			driver.findElement(FooterHelp).click();
+			AllPOMS.Footers_FooterHelp().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Help Page Opens Successfully");
 			sf.assertEquals(driver.getTitle(), HelpPageTitle);

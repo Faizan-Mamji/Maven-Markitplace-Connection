@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMPurchaseAnalysisPage {
 
 	public static WebDriver driver;
@@ -22,30 +24,23 @@ public class POMPurchaseAnalysisPage {
 		POMPurchaseAnalysisPage.driver = driver;
 	}
 
-	// Declare POM
-
-	By purchasenavclick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[5]");
-	By EmailIconClick = By.xpath("(//span[@class='product-list-actions']/a)[2]");
-	By EmailAddress = By.id("email_addresses");
-	By EmailSendBtn = By.xpath("//button[@class='btn btn-primary']");
-
 	public void OpenPurchase_Analysis_Email() {
 		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Purchase Analysis testcase starts here");
-			driver.findElement(purchasenavclick).click();
+			AllPOMS.Purchase_purchasenavclick().click();
 			TimeUnit.SECONDS.sleep(4);
 			sf.assertEquals(PurchasePageTitle, driver.getTitle());
 			logg.info("Purchase Analysis page Assertion Verified successfully");
 			logg.info("Purchase Analysis page opens successfully");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(EmailIconClick).click();
+			AllPOMS.Purchase_EmailIconClick().click();
 			logg.info("Email Modal opens successfully");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(EmailAddress).sendKeys("faizan.mamji@arpatech.com");
+			AllPOMS.Purchase_EmailAddress().sendKeys("faizan.mamji@arpatech.com");
 			logg.info("Email address entered successfully in textbox");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(EmailSendBtn).click();
+			AllPOMS.Purchase_EmailSendBtn().click();
 			TimeUnit.SECONDS.sleep(50);
 			logg.info("Email sent successfully on a given emailaddress");
 			logg.info("*********************** Purchase Analysis TestCase Passed ***********************");

@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMSavedReportsPage {
 
 	public static WebDriver driver;
@@ -24,32 +26,25 @@ public class POMSavedReportsPage {
 		POMSavedReportsPage.driver = driver;
 	}
 
-	// Declare POM
-
-	By LinkSavedReport = By.linkText("Saved Reports");
-	By ScheduleModal = By.xpath("(//a[@class='saved-calendar'])[1]");
-	By ScheduleEmailAddress = By.xpath("(//input[@name='email'])[1]");
-	By BtnScheduleReport = By.xpath("(//button[@class='btn btn-primary'])[1]");
-
 	public void OpenSavedReport_ScheduleModal() {
 		SoftAssert sf =new SoftAssert();
 		try {
 			logg.info("Saved Reports testcase starts here");
-			driver.findElement(LinkSavedReport).click();
+			AllPOMS.SavedReport_LinkSavedReport().click();
 			TimeUnit.SECONDS.sleep(4);
 			sf.assertEquals(SavedReportTitle, driver.getTitle());
 			logg.info("Saved Report page Assertion Verified successfully");
 			logg.info("Saved Report page opens successfully");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(ScheduleModal).click();
+			AllPOMS.SavedReport_ScheduleModal().click();
 			logg.info("Schedule Modal opens successfully");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(ScheduleEmailAddress).clear();
+			AllPOMS.SavedReport_ScheduleEmailAddress().clear();
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(ScheduleEmailAddress).sendKeys("faizan.mamji@arpatech.com");
+			AllPOMS.SavedReport_ScheduleEmailAddress().sendKeys("faizan.mamji@arpatech.com");
 			logg.info("Email address entered successfully in textbox");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(BtnScheduleReport).click();
+			AllPOMS.SavedReport_BtnScheduleReport().click();
 			TimeUnit.SECONDS.sleep(30);
 			logg.info("Schedule modal closed successfully");
 			logg.info("*********************** Saved Report TestCase Passed ***********************");

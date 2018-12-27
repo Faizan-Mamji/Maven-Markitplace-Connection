@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMCalendarsPage {
 
 	public static WebDriver driver;
@@ -23,16 +25,11 @@ public class POMCalendarsPage {
 		POMCalendarsPage.driver = driver;
 	}
 
-	// Define Calendars page POM
-
-	By CalendarDetailView = By.xpath("//span[contains(text(),'Detail view')]");
-	By CalendarNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[1]");
-
 	public void CalendarPage_Function() {
 		SoftAssert sf= new SoftAssert();
 		try {
 			logg.info("Calendars Page testcase starts here");
-			driver.findElement(CalendarNavClick).click();
+			AllPOMS.Calendars_CalendarNavClick().click();
 			logg.info("Calendars Page Open successfully");
 			TimeUnit.SECONDS.sleep(4);
 			sf.assertEquals(driver.getTitle(), CalendarPageTitle);
@@ -41,7 +38,7 @@ public class POMCalendarsPage {
 			calyear.selectByIndex(5);
 			logg.info("Years Dropdown value selected successfully");
 			TimeUnit.SECONDS.sleep(8);
-			driver.findElement(CalendarDetailView).click();
+			AllPOMS.Calendars_CalendarDetailView().click();
 			logg.info("Details view tab opens successfully");
 			TimeUnit.SECONDS.sleep(4);
 			logg.info("*********************** Calendars Page TestCase Passed ***********************");

@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
 import DriverMainPackage.MainDriverClass;
+import POMMain.AllPOMS;
 
 public class POMQuotesCheckout {
 
@@ -35,28 +36,6 @@ public class POMQuotesCheckout {
 		POMQuotesCheckout.driver = driver;
 	}
 
-	// POM declaration
-
-	By FavSelectAll = By.xpath("//div[@class='left']//div[@class='select-all-col']");
-	By BtnAddSelectedToCart = By.xpath("(//div[@class='left']//a)[1]");
-	By ModalBtnCreateQuote = By.xpath("(//div[@class='modal-content']//div[@class='pull-left cart-modal-btns']//a)[1]");
-	By SelectPaymentMethod = By.xpath("//div[@class='step-subsection ccf-box']//div[@class='row']");
-	By SelectBillingAddress = By.xpath("//div[@class='step-subsection last']");
-	By SelectBillingArrow = By.xpath("//div[@class='predictive-dropdown-arrow']");
-	By SelectBillingDrpSelected = By.xpath("(//div[@class='predictive-quickfind-container']//ul//li)[1]");
-	By SaveBtn = By.xpath("//a[contains(text(),'Save & Continue')]");
-	By SelectAddress = By.xpath("(//div[@class='multiselect-address']//ul//li)[1]");
-	By UseThisAddressBtn = By.xpath("//a[contains(text(),'Use This Address')]");
-	By CustomMessage = By.xpath("(//div[@class='fourcolumns']//div)[1]");
-	By CustomLabelMessage = By.xpath("(//div[@class='fourcolumns']//div//label)[1]");
-	By TotalLineItems = By.xpath("//form[@id='standardLineFields']");
-	By Attention = By.xpath("(//input[@type='text'])[1]");
-	By SendEmailConfirmation = By.id("tbEmailConfirmation");
-	By CreateQuoteBtn = By.xpath("(//a[contains(text(),'Create Quote')])[1]");
-	By ErrorOopsBox = By.xpath("//div[@class='modal-dialog']//span");
-	By ErrorCloseBtn = By.xpath("//button[@class='btn btn-default']");
-	By ClickLogoImage = By.xpath("//img[@class='logo']");
-
 	public void CompleteQuoteCheckout_Process() {
 		MainDriverClass ObjMain = new MainDriverClass();
 		SoftAssert sf = new SoftAssert();
@@ -68,13 +47,13 @@ public class POMQuotesCheckout {
 			driver.navigate().to(GetUrl + CompleteURL);
 			TimeUnit.SECONDS.sleep(20);
 			logg.info("Favorites page opens successfully");
-			driver.findElement(FavSelectAll).click();
+			AllPOMS.QuotesCheckout_FavSelectAll().click();
 			logg.info("Products selected Successfully");
 			TimeUnit.SECONDS.sleep(2);
-			driver.findElement(BtnAddSelectedToCart).click();
+			AllPOMS.QuotesCheckout_BtnAddSelectedToCart().click();
 			logg.info("Add Selected To Cart Button clicked successfully");
 			TimeUnit.SECONDS.sleep(20);
-			driver.findElement(ModalBtnCreateQuote).click();
+			AllPOMS.QuotesCheckout_ModalBtnCreateQuote().click();
 			logg.info("Create Quote Button clicked successfully");
 			TimeUnit.SECONDS.sleep(5);
 			sf.assertEquals(driver.getTitle(), QuoteCheckoutPageTitle);
@@ -84,13 +63,12 @@ public class POMQuotesCheckout {
 
 			// Quotes Step 1
 
-			WebElement FieldsStep1 = driver.findElement(SelectPaymentMethod);
+			WebElement FieldsStep1 = AllPOMS.QuotesCheckout_SelectPaymentMethod();
 			List<WebElement> ListTextFields = FieldsStep1.findElements(By.tagName("input"));
 			TimeUnit.SECONDS.sleep(3);
 			int CountTextBox = ListTextFields.size();
 			System.out.println("The count is " + CountTextBox);
-			WebElement DropdownFieldsStep1 = driver.findElement(SelectPaymentMethod);
-			List<WebElement> ListDrpFields = DropdownFieldsStep1.findElements(By.tagName("select"));
+			List<WebElement> ListDrpFields = FieldsStep1.findElements(By.tagName("select"));
 			TimeUnit.SECONDS.sleep(3);
 			int CountDropdown = ListDrpFields.size();
 			logg.info("The count is " + CountDropdown);
@@ -132,20 +110,20 @@ public class POMQuotesCheckout {
 				}
 			}
 
-			String BillingGetText = driver.findElement(SelectBillingAddress).getText();
+			String BillingGetText = AllPOMS.QuotesCheckout_SelectBillingAddress().getText();
 
 			if (BillingGetText.contains(BillingHeadingText)) {
-				driver.findElement(SelectBillingArrow).click();
+				AllPOMS.QuotesCheckout_SelectBillingArrow().click();
 				logg.info("Select Billing address dropdown opens successfully");
-				driver.findElement(SelectBillingDrpSelected).click();
+				AllPOMS.QuotesCheckout_SelectBillingDrpSelected().click();
 				logg.info("Billing address dropdown value selected successfully");
-				driver.findElement(SaveBtn).click();
+				AllPOMS.QuotesCheckout_SaveBtn().click();
 				TimeUnit.SECONDS.sleep(4);
 				logg.info("Save & Continue Button Click successfully");
 			}
 
 			else {
-				driver.findElement(SaveBtn).click();
+				AllPOMS.QuotesCheckout_SaveBtn().click();
 				TimeUnit.SECONDS.sleep(4);
 				logg.info("Save & Continue Button Click successfully");
 			}
@@ -153,13 +131,13 @@ public class POMQuotesCheckout {
 			// Quotes Step 2
 
 			logg.info("Now selection of address on checkout page");
-			driver.findElement(SelectAddress).click();
+			AllPOMS.QuotesCheckout_SelectAddress().click();
 			TimeUnit.SECONDS.sleep(2);
 			logg.info("Address selects successfully");
-			driver.findElement(UseThisAddressBtn).click();
+			AllPOMS.QuotesCheckout_UseThisAddressBtn().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Use this button click successfully");
-			WebElement Step2LineItems = driver.findElement(TotalLineItems);
+			WebElement Step2LineItems = AllPOMS.QuotesCheckout_TotalLineItems();
 			logg.info("Proceed to List ProductsLineItems");
 			TimeUnit.SECONDS.sleep(1);
 			List<WebElement> ProductsLineItems = Step2LineItems
@@ -168,18 +146,18 @@ public class POMQuotesCheckout {
 			int countProductsLineItems = ProductsLineItems.size();
 
 			if (countProductsLineItems > 0) {
-				WebElement CheckLabelAttribute = driver.findElement(CustomMessage);
+				WebElement CheckLabelAttribute = AllPOMS.QuotesCheckout_CustomMessage();
 				List<WebElement> CountLabel = CheckLabelAttribute.findElements(By.tagName("label"));
 				int counttest = CountLabel.size();
 
 				if (counttest > 0) {
 					
-					String GetCustomText = driver.findElement(CustomLabelMessage).getText();
+					String GetCustomText = AllPOMS.QuotesCheckout_CustomLabelMessage().getText();
 
 
 					if (GetCustomText != "") {
 
-						WebElement CustomBox = driver.findElement(By.xpath("//form[@id='standardLineFields']"));
+						WebElement CustomBox = AllPOMS.QuotesCheckout_CustomTextBoxes();
 						List<WebElement> Customdropdown = CustomBox.findElements(By.tagName("select"));
 						int CountCustomDropdown = Customdropdown.size();
 						logg.info("Total count of custom dropdown is " + CountCustomDropdown);
@@ -211,29 +189,29 @@ public class POMQuotesCheckout {
 						}
 					}
 				}
-				driver.findElement(SaveBtn).click();
+				AllPOMS.QuotesCheckout_SaveBtn().click();
 				TimeUnit.SECONDS.sleep(4);
 				logg.info("Save & Continue Button Click successfully");
 
 				// End Checkout Step 2
 
 				// Step 3 of Checkout process
-				driver.findElement(Attention).clear();
-				driver.findElement(Attention).sendKeys("Faizan Mamji");
+				AllPOMS.QuotesCheckout_Attention().clear();
+				AllPOMS.QuotesCheckout_Attention().sendKeys("Faizan Mamji");
 				TimeUnit.SECONDS.sleep(2);
 				logg.info("Enter text in attention textbox");
-				driver.findElement(SendEmailConfirmation).clear();
+				AllPOMS.QuotesCheckout_SendEmailConfirmation().clear();
 				TimeUnit.SECONDS.sleep(2);
-				driver.findElement(SendEmailConfirmation).sendKeys("faizan.mamji@arpatech.com");
+				AllPOMS.QuotesCheckout_SendEmailConfirmation().sendKeys("faizan.mamji@arpatech.com");
 				TimeUnit.SECONDS.sleep(2);
 				logg.info("Enter text in Email textbox");
 				logg.info("Email entered successfully in textbox");
-				driver.findElement(SaveBtn).click();
+				AllPOMS.QuotesCheckout_SaveBtn().click();
 				TimeUnit.SECONDS.sleep(4);
 				logg.info("Save & Continue Button Click successfully");
 
 				// Step 4 of Checkout process
-				driver.findElement(CreateQuoteBtn).click();
+				AllPOMS.QuotesCheckout_CreateQuoteBtn().click();
 				TimeUnit.SECONDS.sleep(50);
 				logg.info("Place Holder Button Click successfully!");
 
@@ -247,12 +225,12 @@ public class POMQuotesCheckout {
 				}
 
 				else {
-					String errormessage = driver.findElement(ErrorOopsBox).getText();
+					String errormessage = AllPOMS.QuotesCheckout_ErrorOopsBox().getText();
 					if (errormessage.equalsIgnoreCase(CheckOutErrorMessage)) {
-						driver.findElement(ErrorCloseBtn).click();
+						AllPOMS.QuotesCheckout_ErrorCloseBtn().click();
 						TimeUnit.MILLISECONDS.sleep(2000);
 						logg.info("Oops box close on checkout page!");
-						driver.findElement(ClickLogoImage).click();
+						AllPOMS.QuotesCheckout_ClickLogoImage().click();
 						logg.info("Navigate to Home page!");
 						logg.info(
 								"*********************** Quote Checkout Not Done Due To Api Issue As It Opens Oops Modal ***********************");

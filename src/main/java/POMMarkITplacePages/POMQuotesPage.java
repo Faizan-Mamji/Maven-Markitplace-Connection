@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import POMMain.AllPOMS;
+
 public class POMQuotesPage {
 
 	public static WebDriver driver;
@@ -22,31 +24,24 @@ public class POMQuotesPage {
 	public static void main(String[] args) {
 	}
 
-	public POMQuotesPage(WebDriver driver) 
-	{
-		POMQuotesPage.driver=driver;
+	public POMQuotesPage(WebDriver driver) {
+		POMQuotesPage.driver = driver;
 	}
 	
-	// Declare POM
-
-	By QuotesNavClick = By.xpath("(//ul[@class='section-nav-item-container track']//a)[4]");
-	By BtnLoadMore = By.id("load-more-link");
-	By QuotesTimePeriod = By.xpath("//select[@title='Select Time Period']");
-
 	public void QuotesPage_Functionality() {
-		SoftAssert sf =new SoftAssert();
+		SoftAssert sf = new SoftAssert();
 		try {
 			logg.info("Quotes testcase starts here");
-			driver.findElement(QuotesNavClick).click();
+			AllPOMS.Quotes_QuotesNavClick().click();
 			TimeUnit.SECONDS.sleep(10);
 			sf.assertEquals(QuotesPageTitle, driver.getTitle());
 			logg.info("Quotes Page assertion verified Successfully");
 			logg.info("Quotes Page opened Successfully");
-			Select DrpOrdersTimePeriod = new Select(driver.findElement(QuotesTimePeriod));
+			Select DrpOrdersTimePeriod = new Select(AllPOMS.Quotes_QuotesTimePeriod());
 			DrpOrdersTimePeriod.selectByIndex(4);
 			TimeUnit.SECONDS.sleep(20);
 			logg.info("Dropdown value changed");
-			String GetBtnClass = driver.findElement(BtnLoadMore).getAttribute("class");
+			String GetBtnClass = AllPOMS.Quotes_BtnLoadMore().getAttribute("class");
 			String CheckOrderData = driver.getPageSource();
 			if (CheckOrderData.contains(EmptyPageText)) {
 				logg.info("There is no data on Quotes page");
@@ -63,7 +58,7 @@ public class POMQuotesPage {
 				else {
 					logg.info("Button found enabled!");
 					logg.info("Click on loadmore button");
-					driver.findElement(BtnLoadMore).click();
+					AllPOMS.Quotes_BtnLoadMore().click();
 					TimeUnit.SECONDS.sleep(25);
 					logg.info("Load More button clicks successfully and data loads");
 					logg.info("*********************** Quotes TestCase Passed ***********************");
@@ -75,7 +70,7 @@ public class POMQuotesPage {
 			logg.info(
 					"POMQuotesPage - Exception!!! - Must have issue on Quotes page while click to loadmore button - QuotesPage_Functionality "
 							+ ex.getMessage());
-			
+
 			Assert.fail("Failed in class - POMQuotesPage");
 		}
 	}
