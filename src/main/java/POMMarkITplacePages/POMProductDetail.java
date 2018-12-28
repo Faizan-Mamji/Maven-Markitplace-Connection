@@ -70,7 +70,7 @@ public class POMProductDetail {
 			logg.info("Email enters in textbox Successfully");
 			AllPOMS.PDP_EmailSendBtn().click();
 			logg.info("Email Send Button click successfully");
-			TimeUnit.MILLISECONDS.sleep(50000);
+			TimeUnit.MILLISECONDS.sleep(60000);
 			logg.info("*********************** PDP Email TestCase Passed ***********************");
 		}
 		

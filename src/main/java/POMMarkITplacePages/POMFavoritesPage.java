@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -37,13 +39,16 @@ public class POMFavoritesPage {
 	public void Favorites_Page_TestFunctionality() throws InterruptedException {
 		// PropertyConfigurator.configure("log4j.properties");
 		SoftAssert sf =new SoftAssert();
+		WebDriverWait wt= new WebDriverWait(driver, 20);
 		try {
 			logg.info("Favorites TestCase Starts Here");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Fav_FavoritesLinkText()));
 			AllPOMS.Fav_FavoritesLinkText().click();
 			TimeUnit.MILLISECONDS.sleep(15000);
 			logg.info("Favorites page opens successfully");
 			sf.assertEquals(FavoritesPageTitle, driver.getTitle());
 			logg.info("Favorites assertion passed successfully");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Fav_SelectAllCheckbox()));
 			AllPOMS.Fav_SelectAllCheckbox().click();
 			TimeUnit.MILLISECONDS.sleep(4000);
 			logg.info("SelectAll checkbox select all favorites products on the page");

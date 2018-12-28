@@ -187,7 +187,7 @@ public class POMOrderCheckOutPage {
 				logg.info("Enter text in Email textbox");
 				logg.info("Email entered successfully in textbox");
 				AllPOMS.OrderCheckout_SaveBtn().click();
-				TimeUnit.SECONDS.sleep(4);
+				TimeUnit.SECONDS.sleep(12);
 				logg.info("Save & Continue Button Click successfully");
 
 				// Step 4 of Checkout process

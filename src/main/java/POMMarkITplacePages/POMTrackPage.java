@@ -1,12 +1,17 @@
 package POMMarkITplacePages;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.expectThrows;
+
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -30,16 +35,20 @@ public class POMTrackPage {
 	
 	public void TrackPageFunction_BuyItemsAgain() {
 		SoftAssert sf =new SoftAssert();
+		WebDriverWait wt=new WebDriverWait(driver, 20);
 		try {
 			logg.info("Track TestCase Starts Here");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.TrackDashboard_TrackNavClick()));
 			AllPOMS.TrackDashboard_TrackNavClick().click();
 			TimeUnit.SECONDS.sleep(10);
 			logg.info("Track Dashboard opens successfully");
 			sf.assertEquals(driver.getTitle(), TrackPageTitle);
 			logg.info("Track Dashboard Assertion verified");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.TrackDashboard_BtnBuyItemsAgain()));
 			AllPOMS.TrackDashboard_BtnBuyItemsAgain().click();
 			TimeUnit.SECONDS.sleep(30);
 			logg.info("Buy items button click successfully");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.TrackDashboard_CloseBtnAddToCart()));
 			AllPOMS.TrackDashboard_CloseBtnAddToCart().click();
 			logg.info("Add To Cart Modal Close successfully");
 			TimeUnit.SECONDS.sleep(5);

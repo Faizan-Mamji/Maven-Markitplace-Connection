@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import POMMain.AllPOMS;
@@ -31,6 +33,8 @@ public class POMStandardListing {
 	// Declare POM of StandardListing Page
 
 	public void Navigate_Standard_Listing_Verify_Left_Navigation_AddToCart() {
+		
+		WebDriverWait wt=new WebDriverWait(driver, 20);
 
 		try {
 			logg.info("Standard Listing testcase starts");
@@ -58,6 +62,7 @@ public class POMStandardListing {
 					AllPOMS.StandardList_AddToCartBtn().click();
 					TimeUnit.SECONDS.sleep(30);
 					logg.info("Add To Cart Modal Open Successfully");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.StandardList_AddToCartModalClose()));
 					AllPOMS.StandardList_AddToCartModalClose().click();
 					TimeUnit.SECONDS.sleep(2);
 					logg.info("Add To Cart Modal Close Successfully");

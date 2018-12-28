@@ -6,7 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -28,6 +30,7 @@ public class POMOrdersPage {
 
 	public void OrdersPage_Functionality() {
 		SoftAssert sf = new SoftAssert();
+		WebDriverWait wt=new WebDriverWait(driver, 20);
 		try {
 			logg.info("Orders testcase starts here");
 			AllPOMS.Orders_OrdersNavClick().click();
@@ -36,9 +39,11 @@ public class POMOrdersPage {
 			logg.info("Orders Page assertion verified Successfully");
 			logg.info("Orders Page opened Successfully");
 			logg.info("Click On Buy items again button");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Orders_OrderBuyItemAgain()));
 			AllPOMS.Orders_OrderBuyItemAgain().click();
 			TimeUnit.SECONDS.sleep(25);
 			logg.info("Buy items again modal opens Successfully");
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Orders_CartModalClose()));
 			AllPOMS.Orders_CartModalClose().click();
 			TimeUnit.SECONDS.sleep(3);
 			logg.info("Buy items again modal Close Successfully");

@@ -1,5 +1,7 @@
 package POMMarkITplacePages;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -9,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
 import DriverMainPackage.MainDriverClass;
@@ -39,6 +44,7 @@ public class POMQuotesCheckout {
 	public void CompleteQuoteCheckout_Process() {
 		MainDriverClass ObjMain = new MainDriverClass();
 		SoftAssert sf = new SoftAssert();
+		WebDriverWait wt=new WebDriverWait(driver, 20);
 
 		try {
 			logg.info("Quotes Confirmation TestCase Starts Here!");
@@ -53,6 +59,7 @@ public class POMQuotesCheckout {
 			AllPOMS.QuotesCheckout_BtnAddSelectedToCart().click();
 			logg.info("Add Selected To Cart Button clicked successfully");
 			TimeUnit.SECONDS.sleep(20);
+			wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.QuotesCheckout_ModalBtnCreateQuote()));
 			AllPOMS.QuotesCheckout_ModalBtnCreateQuote().click();
 			logg.info("Create Quote Button clicked successfully");
 			TimeUnit.SECONDS.sleep(5);
@@ -207,9 +214,9 @@ public class POMQuotesCheckout {
 				logg.info("Enter text in Email textbox");
 				logg.info("Email entered successfully in textbox");
 				AllPOMS.QuotesCheckout_SaveBtn().click();
-				TimeUnit.SECONDS.sleep(4);
+				TimeUnit.SECONDS.sleep(12);
 				logg.info("Save & Continue Button Click successfully");
-
+				wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.QuotesCheckout_CreateQuoteBtn()));
 				// Step 4 of Checkout process
 				AllPOMS.QuotesCheckout_CreateQuoteBtn().click();
 				TimeUnit.SECONDS.sleep(50);

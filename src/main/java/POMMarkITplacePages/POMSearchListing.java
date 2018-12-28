@@ -9,6 +9,11 @@ import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -40,6 +45,7 @@ public class POMSearchListing {
 	
 	public void OpenSearchPage_AddToCart_And_Verifyproducts_On_FavoritesPage() throws InterruptedException {
 		SoftAssert sf =new SoftAssert();
+		WebDriverWait wt =new WebDriverWait(driver, 20);
 		try {
 			logg.info("SearchListing TestCase Starts");
 			AllPOMS.txt_search().sendKeys("printers");
@@ -76,9 +82,11 @@ public class POMSearchListing {
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
 					logg.info("Click on Add To Cart Button");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.btn_AddToCart()));
 					AllPOMS.btn_AddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(20000);
 					logg.info("Product Added To Cart successfully");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Modal_CloseAddToCart()));
 					AllPOMS.Modal_CloseAddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(5000);
 					logg.info("Add To Cart Modal Closed");
@@ -107,9 +115,11 @@ public class POMSearchListing {
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
 					logg.info("Click on Add To Cart Button");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.btn_AddToCart()));
 					AllPOMS.btn_AddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(20000);
 					logg.info("Product Added To Cart successfully");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Modal_CloseAddToCart()));
 					AllPOMS.Modal_CloseAddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(5000);
 					logg.info("Add To Cart Modal Closed");
@@ -159,9 +169,11 @@ public class POMSearchListing {
 					sf.assertEquals(SearchPageTitle, driver.getTitle());
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.btn_AddToCart()));
 					AllPOMS.btn_AddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(20000);
 					logg.info("Product Added To Cart successfully");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Modal_CloseAddToCart()));
 					AllPOMS.Modal_CloseAddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("Add To Cart Modal Close");
@@ -190,9 +202,11 @@ public class POMSearchListing {
 					sf.assertEquals(SearchPageTitle, driver.getTitle());
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("SearchListing assert Verified");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.btn_AddToCart()));
 					AllPOMS.btn_AddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(20000);
 					logg.info("Product Added To Cart successfully");
+					wt.until(ExpectedConditions.elementToBeClickable(AllPOMS.Modal_CloseAddToCart()));
 					AllPOMS.Modal_CloseAddToCart().click();
 					TimeUnit.MILLISECONDS.sleep(2000);
 					logg.info("Add To Cart Modal Close");
