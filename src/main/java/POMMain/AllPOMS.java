@@ -84,7 +84,7 @@ public class AllPOMS {
 
 	public static WebElement Modal_CloseAddToCart() {
 
-		By AddToCartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[2]");
+		By AddToCartModalClose = By.xpath("(//div[@class='modal-content']/button[@title='Close (Esc)'])[3]");
 		return driver.findElement(AddToCartModalClose);
 	}
 
@@ -211,7 +211,7 @@ public class AllPOMS {
 
 	public static WebElement StandardList_AddToCartModalClose() {
 
-		By AddToCartModalClose = By.xpath("(//div[@class='modal-content']//button[@title='Close (Esc)'])[2]");
+		By AddToCartModalClose = By.xpath("(//div[@class='modal-content']//button[@title='Close (Esc)'])[3]");
 		return driver.findElement(AddToCartModalClose);
 	}
 
